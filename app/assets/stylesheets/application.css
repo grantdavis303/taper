@@ -37,3 +37,11 @@ input[type="submit"]:hover {
   transition: 1s;
   background-color: rgb(0, 208, 255);
 }
+
+/* Media Queries */
+
+@media (width <= 800px) {
+  body {
+    background-color: rgb(207, 69, 69);
+  }
+}
