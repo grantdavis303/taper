@@ -51,7 +51,7 @@ gem "jsonapi-serializer"
 gem "bcrypt", "~> 3.1.7"
 
 # Design Gems
-gem "sassc-rails"
+# gem "sassc-rails"
 gem "bootstrap-sass"
 
 group :development do
