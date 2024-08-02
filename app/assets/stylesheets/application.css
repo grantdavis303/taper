@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+
+ /* Flash Messages */
+
+div.flash_message {
+  color: rgb(250, 100, 100);;
+  width: fit-content;
+}
