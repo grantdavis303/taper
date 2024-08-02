@@ -1,6 +1,6 @@
 # Taper
 
-### [Live Deployment]()
+### [Live Deployment](https://taper-4affd5dec44c.herokuapp.com/)
 
 ### About
 
@@ -35,11 +35,11 @@ rails s
 
 ### Features Added
 
-- [ ] User Authentication
-- [ ] Role-Based Authorization
+- [x] User Authentication
+- [x] Role-Based Authorization
 - [ ] Google OAuth
 - [ ] GitHub OAuth
-- [ ] CI/CD
+- [x] CI/CD
 - [ ] Mobile Responsive
 - [ ] Text Notifications
 - [ ] Email Notifications
@@ -47,9 +47,9 @@ rails s
 
 ### Tests
 
-* 0 Total Tests (0 / 0 LOC (100.0%) covered)
+* 26 Total Tests (124 / 124 LOC (100.0%) covered)
 * 0 Feature Tests (0 / 0 LOC (100.0%) covered)
-* 0 Model Tests (0 / 0 LOC (100.0%) covered)
+* 26 Model Tests (124 / 124 LOC (100.0%) covered)
 
 **Testing Instructions**
 
@@ -60,10 +60,6 @@ open coverage/index.html
 ```
 
 ### Resources
-
-* [GitHub Project Board]()
-* [Resource 1]()
-* [Resource 2]()
 
 No resources used for this project.
 
