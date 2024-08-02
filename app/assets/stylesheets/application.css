@@ -39,15 +39,8 @@ input[type="submit"]:hover {
 }
 
 /* Media Queries */
-/* 
-@media (width > 800px) and (width <= 1000px){
+@media screen and (width <= 800px) {
   body {
-    background-color: rgb(69, 175, 207);
+    background-color: rgb(90, 207, 69);
   }
 }
-
-@media (width <= 800px) {
-  body {
-    background-color: rgb(207, 69, 69);
-  }
-} */
