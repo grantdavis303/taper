@@ -40,7 +40,7 @@ rails s
 - [ ] Google OAuth
 - [ ] GitHub OAuth
 - [x] CI/CD
-- [ ] Mobile Responsive
+- [ ] Mobile Responsiveness
 - [ ] Text Notifications
 - [ ] Email Notifications
 - [ ] 2 Factor Authentication
