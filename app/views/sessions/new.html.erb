@@ -1,0 +1,21 @@
+<div class="login_form_container">
+  <h2> Login </h2>
+
+  <%= form_with url: sessions_path, method: :post, data: {turbo: false} do |form| %>
+    <%= form.label :username, "Username:" %>
+    <%= form.text_field :username %>
+
+    <%= form.label :password, "Password:" %>
+    <%= form.password_field :password %>
+
+    <%= check_box_tag(:remember_me) %>
+    <%= label_tag(:remember_me, "Remember Me") %>
+
+    <%= form.submit "Login" %>
+  <% end %>
+</div>
+
+<div class="links">
+  <%= link_to "Create Account", new_user_account_path %>
+  <%= link_to "Forgot Password", password_reset_index_path %>
+</div>
