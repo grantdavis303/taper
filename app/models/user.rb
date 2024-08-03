@@ -13,7 +13,7 @@ class User < ApplicationRecord
       errors.add(:email, 'is not valid')
     else
       errors.add(:email, 'is missing a @') if !email.include?('@')
-      errors.add(:email, 'is missing a .') if !email.include?('.')
+      errors.add(:email, 'is missing a domain') if !email.include?('.')
     end
   end
 end
