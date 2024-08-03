@@ -14,9 +14,15 @@
     <%= yield %>
 
     <% flash.each do |type, message| %>
-      <div class="flash_message">
-        <p> <%= message %> </p>
-      </div>
+      <% if type == 'error' %>
+        <div class="flash_message error">
+          <p> <%= message %> </p>
+        </div>
+      <% else %>
+        <div class="flash_message success">
+          <p> <%= message %> </p>
+        </div>
+      <% end %>
     <% end %>
   </body>
 </html>
