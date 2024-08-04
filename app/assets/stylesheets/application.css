@@ -3,12 +3,32 @@
 }
 
 html, body {
-  background-color: rgb(250, 250, 250);
-  height: 100vh; /* 100% */
+  /* background-color: rgb(250, 250, 250); */
+  height: 100%; /* 100vh*/
   margin: 0px;
   padding: 0px;
 }
 
+div.login_form_container, div.links, div.new_user_container {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* Logo */
+div.main_logo {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+img.logo {
+  width: 200px;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Flash Messages */
 div.flash_message {
   opacity: 0;
   max-width: 400px;
@@ -33,11 +53,7 @@ div.flash_message.success{
   25%, 75% { opacity: 1; }
 }
 
-div.login_form_container, div.links, div.new_user_container {
-  max-width: 400px;
-  margin: 0 auto;
-}
-
+/* Inputs */
 input[type="text"], input[type="password"], input[type="submit"] {
   width: 100%;
   padding: 12px 20px;
@@ -53,8 +69,8 @@ input[type="submit"]:hover {
 }
 
 /* Media Queries */
-@media screen and (width <= 800px) {
+@media screen and (width <= 480px) {
   body {
-    background-color: rgb(90, 207, 69);
+    background-color: rgb(143, 241, 240);
   }
 }
