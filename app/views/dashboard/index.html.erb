@@ -2,5 +2,4 @@
 
 <div class="new_drink_container">
   <h2> Welcome, <%= current_user.user.first_name %>! </h2>
-  <p> <%= link_to 'Log Out', session_path(session[:session_id]), data: {turbo_method: :delete}, class: 'active' %> </p>
 </div>
