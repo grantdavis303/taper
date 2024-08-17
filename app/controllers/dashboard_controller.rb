@@ -5,8 +5,9 @@ class DashboardController < ApplicationController
     redirect_to root_path if current_user.nil?
   end
 
-  private def require_user
+  private
+  
+  def require_user
     redirect_to root_path unless logged_in?
-    # render file: "public/404.html" unless logged_in?
   end
 end
