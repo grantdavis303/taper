@@ -1,0 +1,23 @@
+<%= render partial: "shared/main_nav" %>
+
+<h2> All Drinks </h2>
+
+<% if current_user.drinks.empty? %>
+
+  <p> There are currently no drinks </p>
+
+<% else %>
+
+  <% current_user.formatted_drinks.each do |drink| %>
+    <div class='drink'>
+      <p> Type: <%= drink.drink_type %> </p>
+      <p> Ounces: <%= drink.ounces %> </p>
+      <p> ABV%: <%= drink.percentage %> </p>
+      <p> Units: <%= drink.units %> </p>
+      <p> Created: <%= drink.formatted_created_at %> </p>
+      <!-- <p> Update </p>
+      <p> Delete </p> -->
+    </div>
+  <% end %>
+
+<% end %>
