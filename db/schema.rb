@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_02_033604) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_16_153758) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,6 +24,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_02_033604) do
     t.datetime "updated_at", null: false
     t.index ["role_id"], name: "index_accounts_on_role_id"
     t.index ["user_id"], name: "index_accounts_on_user_id"
+  end
+
+  create_table "drinks", force: :cascade do |t|
+    t.bigint "account_id", null: false
+    t.string "drink_type"
+    t.decimal "ounces"
+    t.decimal "percentage"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_drinks_on_account_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -43,4 +53,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_02_033604) do
 
   add_foreign_key "accounts", "roles"
   add_foreign_key "accounts", "users"
+  add_foreign_key "drinks", "accounts"
 end
