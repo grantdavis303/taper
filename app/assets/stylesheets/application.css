@@ -69,7 +69,6 @@ input[type="submit"]:hover {
 }
 
 /* Nav Bar */
-
 ul {
   list-style-type: none;
   margin: 0;
@@ -106,9 +105,19 @@ li a.active:hover {
   background-color: #e00000;
 }
 
-/* Media Queries */
+/* Drink */
+div.drink {
+  background-color: aquamarine;
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 4px;
+  margin-bottom: 20px;
+  padding-left: 15px;
+}
+
+/* Media Queries
 @media screen and (width <= 480px) {
   body {
     background-color: rgb(143, 241, 240);
   }
 }
+*/
