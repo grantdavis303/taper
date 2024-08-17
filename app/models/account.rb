@@ -9,6 +9,7 @@ class Account < ApplicationRecord
 
   belongs_to :user
   belongs_to :role
+  has_many :drinks
 
   def valid_password
     if password.nil? || password.empty?
@@ -19,5 +20,9 @@ class Account < ApplicationRecord
       errors.add(:password, 'is missing a lowercase character') if password[/[a-z]/] == nil
       errors.add(:password, 'is missing a uppercase character') if password[/[A-Z]/] == nil
     end
-  end 
+  end
+
+  def formatted_drinks
+    drinks.reverse
+  end
 end
