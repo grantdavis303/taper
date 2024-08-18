@@ -1,73 +1,88 @@
-user = Role.create!(name: 'user')
-admin = Role.create!(name: 'admin')
+role_user = Role.create!(name: 'user')
 
-user1 = User.create!(
-  first_name: 'Grant',
-  last_name: 'Davis',
+user = User.create!(
+  first_name: 'Testly',
+  last_name: 'Testerman',
   email: 'test@test.com',
-  phone_number: '1234567890',
+  phone_number: '0123456789',
 )
 
-account1 = Account.create!(
-  user_id: user1.id,
-  role_id: user.id,
+account = Account.create!(
+  user_id: user.id,
+  role_id: role_user.id,
   username: 'testuser1',
   password: 'Password123!',
   last_login: 'Does not matter',
 )
 
-account1.drinks.create!(
+account.drinks.create!(
   drink_type: 'Beer',
   ounces: '16',
-  percentage: '8.1'
+  percentage: '8.1',
+  created_at: 'Thur, 8 Aug 2024 12:00:00.000000000 UTC +00:00'
 )
 
-account1.drinks.create!(
+account.drinks.create!(
   drink_type: 'Beer',
   ounces: '12',
-  percentage: '8'
+  percentage: '8',
+  created_at: 'Thur, 8 Aug 2024 12:00:00.000000000 UTC +00:00'
 )
 
-account1.drinks.create!(
+account.drinks.create!(
   drink_type: 'Beer',
   ounces: '16',
-  percentage: '7.2'
+  percentage: '7.2',
+  created_at: 'Fri, 9 Aug 2024 12:00:00.000000000 UTC +00:00'
 )
 
-account1.drinks.create!(
+account.drinks.create!(
   drink_type: 'Beer',
   ounces: '12',
-  percentage: '6.5'
+  percentage: '6.5',
+  created_at: 'Fri, 9 Aug 2024 12:00:00.000000000 UTC +00:00'
 )
 
-account1.drinks.create!(
+account.drinks.create!(
   drink_type: 'Wine',
   ounces: '12.7',
-  percentage: '13.5'
+  percentage: '13.5',
+  created_at: 'Sun, 11 Aug 2024 12:00:00.000000000 UTC +00:00'
 )
 
-account1.drinks.create!(
+account.drinks.create!(
   drink_type: 'Beer',
   ounces: '16',
-  percentage: '7'
+  percentage: '7',
+  created_at: 'Sun, 11 Aug 2024 12:00:00.000000000 UTC +00:00'
 )
 
-account1.drinks.create!(
+account.drinks.create!(
   drink_type: 'Beer',
   ounces: '16',
-  percentage: '6.95'
+  percentage: '6.95',
+  created_at: 'Wed, 14 Aug 2024 12:00:00.000000000 UTC +00:00'
 )
 
-account1.drinks.create!(
+account.drinks.create!(
   drink_type: 'Beer',
   ounces: '12',
-  percentage: '8'
+  percentage: '8',
+  created_at: 'Fri, 16 Aug 2024 12:00:00.000000000 UTC +00:00'
 )
 
-account1.drinks.create!(
+account.drinks.create!(
   drink_type: 'Beer',
   ounces: '16',
-  percentage: '7.3'
+  percentage: '7.3',
+  created_at: 'Fri, 16 Aug 2024 12:00:00.000000000 UTC +00:00'
+)
+
+account.drinks.create!(
+  drink_type: 'Beer',
+  ounces: '12',
+  percentage: '5.0',
+  created_at: 'Fri, 16 Aug 2024 12:00:00.000000000 UTC +00:00'
 )
 
 puts "Seeded Successfully"
