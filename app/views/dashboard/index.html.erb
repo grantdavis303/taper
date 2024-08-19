@@ -3,9 +3,29 @@
 <div class="new_drink_container">
   <h2> Welcome, <%= current_user.user.first_name %>! </h2>
 
-  <h2> Your Drinks </h2>
-  <h3> Today </h3>
-  <h3> Past Week </h3>
-  <h3> This Year </h3>
-  <h3> All Time </h3>
+  <h2> Summary </h2>
+
+  <div class="drink_container">
+    <p><b> Today </b></p>
+    <p> Units: <%= current_user.drinks_today_units %> </p>
+    <p> Drinks: <%= current_user.drinks_today_count %> </p>  
+  </div>
+
+  <div class="drink_container">
+    <p><b> Past Week </b></p>
+    <p> Units: <%= current_user.drinks_week_units %> </p>
+    <p> Drinks: <%= current_user.drinks_week_count %> </p>
+  </div>
+
+  <div class="drink_container">
+    <p><b> This Year </b></p>
+    <p> Units: <%= current_user.drinks_year_units %> </p>
+    <p> Drinks: <%= current_user.drinks_year_count %> </p>
+  </div>
+
+  <div class="drink_container">
+    <p><b> All Time </b></p>
+    <p> Units: <%= current_user.drinks_total_units %> </p>
+    <p> Drinks: <%= current_user.drinks_total_count %> </p>
+  </div>
 </div>
