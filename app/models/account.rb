@@ -72,4 +72,8 @@ class Account < ApplicationRecord
     drinks
       .count
   end
+
+  def days_without_drinking
+    ((Time.now - drinks.last.created_at) / (24 * 60 * 60)).round(0)
+  end
 end
