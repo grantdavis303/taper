@@ -81,7 +81,28 @@ account.drinks.create!(
 account.drinks.create!(
   drink_type: 'Beer',
   ounces: '12',
-  percentage: '5.0',
+  percentage: '5',
+  created_at: 'Fri, 16 Aug 2024 12:00:00.000000000 UTC +00:00'
+)
+
+account.drinks.create!(
+  drink_type: 'Beer',
+  ounces: '12',
+  percentage: '8',
+  created_at: 'Sun, 18 Aug 2024 12:00:00.000000000 UTC +00:00'
+)
+
+account.drinks.create!(
+  drink_type: 'Beer',
+  ounces: '12',
+  percentage: '5',
+  created_at: 'Sun, 18 Aug 2024 12:00:00.000000000 UTC +00:00'
+)
+
+account.drinks.create!(
+  drink_type: 'Spirit',
+  ounces: '2',
+  percentage: '40',
   created_at: 'Fri, 16 Aug 2024 12:00:00.000000000 UTC +00:00'
 )
 
