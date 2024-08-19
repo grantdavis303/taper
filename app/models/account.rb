@@ -23,6 +23,53 @@ class Account < ApplicationRecord
   end
 
   def formatted_drinks
-    drinks.reverse
+    drinks
+      .reverse
+  end
+
+  def drinks_today_units
+    drinks
+      .where("created_at >= '#{Date.today.to_default_s}'")
+      .sum { |drink| drink.units }
+  end
+
+  def drinks_today_count
+    drinks
+      .where("created_at >= '#{Date.today.to_default_s}'")
+      .count
+  end
+
+  def drinks_week_units
+    drinks
+      .where("created_at >= '#{(Date.today - 7).to_default_s}'")
+      .sum { |drink| drink.units }
+  end
+
+  def drinks_week_count
+    drinks
+      .where("created_at >= '#{(Date.today - 7).to_default_s}'")
+      .count
+  end
+
+  def drinks_year_units
+    drinks
+      .where("created_at >= '#{(Date.today.year)}-01-01'")
+      .sum { |drink| drink.units }
+  end
+
+  def drinks_year_count
+    drinks
+      .where("created_at >= '#{(Date.today.year)}-01-01'")
+      .count
+  end
+
+  def drinks_total_units
+    drinks
+      .sum { |drink| drink.units }
+  end
+
+  def drinks_total_count
+    drinks
+      .count
   end
 end
