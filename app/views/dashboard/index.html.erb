@@ -5,6 +5,8 @@
 
   <h2> Summary </h2>
 
+  <p> You have gone <%= current_user.days_without_drinking %> day(s) without drinking. </p>
+
   <div class="drink_container">
     <p><b> Today </b></p>
     <p> Units: <%= current_user.drinks_today_units %> </p>
@@ -12,13 +14,13 @@
   </div>
 
   <div class="drink_container">
-    <p><b> Past Week </b></p>
+    <p><b> Past 7 Days </b></p>
     <p> Units: <%= current_user.drinks_week_units %> </p>
     <p> Drinks: <%= current_user.drinks_week_count %> </p>
   </div>
 
   <div class="drink_container">
-    <p><b> This Year </b></p>
+    <p><b> This Year (<%= Date.today.year %>) </b></p>
     <p> Units: <%= current_user.drinks_year_units %> </p>
     <p> Drinks: <%= current_user.drinks_year_count %> </p>
   </div>
