@@ -114,6 +114,15 @@ div.drink {
   padding-left: 15px;
 }
 
+/* Drink Container */
+div.drink_container {
+  background-color: rgb(229, 229, 229);
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 4px;
+  margin-bottom: 20px;
+  padding-left: 15px;
+}
+
 /* Media Queries
 @media screen and (width <= 480px) {
   body {
