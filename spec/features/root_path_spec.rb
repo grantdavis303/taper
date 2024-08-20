@@ -4,6 +4,10 @@ RSpec.describe 'Sessions New', type: :feature do
   it 'has everything' do
     visit root_path
 
+    within '.main_logo' do
+      expect(page.find('img.logo')['src']).to eq ('/assets/test_logo-315f67f4cede5c5d08c10b18a1ef188ed12b5d26c4169bdb5521a2b5679fdff4.png')
+    end
+
     within '.login_form_container' do
       expect(page).to have_content('Login')
       expect(page).to have_content('Username')
@@ -17,6 +21,7 @@ RSpec.describe 'Sessions New', type: :feature do
 
     within '.links' do
       expect(page).to have_link('Create Account')
+      expect(page).to have_link('Forgot Username')
       expect(page).to have_link('Forgot Password')
     end
   end
