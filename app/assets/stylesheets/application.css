@@ -9,9 +9,17 @@ html, body {
   padding: 0px;
 }
 
+div.page_content {
+  margin: 20px;
+}
+
 div.login_form_container, div.links, div.new_user_container {
   max-width: 400px;
   margin: 0 auto;
+}
+
+span.red {
+  color: red;
 }
 
 /* Logo */
@@ -22,6 +30,14 @@ div.main_logo {
 
 img.logo {
   width: 200px;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+img.nav_logo {
+  width: 30px;
   height: auto;
   display: block;
   margin-left: auto;
@@ -65,10 +81,14 @@ input[type="text"], input[type="password"], input[type="submit"] {
 
 input[type="submit"]:hover {
   transition: 1s;
-  background-color: rgb(0, 208, 255);
+  background-color: aquamarine;
 }
 
 /* Nav Bar */
+div.main_nav {
+  background-color: #333;
+}
+
 ul {
   list-style-type: none;
   margin: 0;
@@ -112,6 +132,13 @@ div.drink {
   border-radius: 4px;
   margin-bottom: 20px;
   padding-left: 15px;
+  padding-right: 15px;
+  max-width: 400px;
+}
+
+/* New Drink Input Drink Container */
+div.new_drink_input {
+  max-width: 400px;
 }
 
 /* Drink Container */
@@ -121,6 +148,8 @@ div.drink_container {
   border-radius: 4px;
   margin-bottom: 20px;
   padding-left: 15px;
+  padding-right: 15px;
+  max-width: 400px;
 }
 
 /* Media Queries
