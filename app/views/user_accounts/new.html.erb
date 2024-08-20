@@ -4,29 +4,38 @@
   <h2> Create Account </h2>
   <%= form_with url: user_accounts_path, method: :post, data: {turbo: false} do |form| %>
 
+    <span class="red">*</span>
     <%= form.label :first_name, "First Name:" %>
     <%= form.text_field :first_name %>
 
+    <span class="red">*</span>
     <%= form.label :last_name, "Last Name:" %>
     <%= form.text_field :last_name %>
 
+    <span class="red">*</span>
     <%= form.label :email, "Email:" %>
     <%= form.text_field :email %>
 
+    <span class="red">*</span>
     <%= form.label :phone_number, "Phone Number:" %>
     <%= form.text_field :phone_number %>
 
+    <span class="red">*</span>
     <%= form.label :username, "Username:" %>
     <%= form.text_field :username %>
 
+    <span class="red">*</span>
     <%= form.label :password, "Password:" %>
     <%= form.password_field :password %>
 
+    <span class="red">*</span>
     <%= form.label :password_confirmation, "Password Confirmation:" %>
     <%= form.password_field :password_confirmation %>
 
     <%= form.submit "Create Account" %>
   <% end %>
+
+  <p> <span class="red">*</span> Indicates a required field </p>
 
   <p> Note: Password must be at least 8 characters long, contain one uppercase letter, one lowercase letter, and one special character. </p>
 </div>

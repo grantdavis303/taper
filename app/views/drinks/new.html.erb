@@ -1,18 +1,20 @@
 <%= render partial: "shared/main_nav" %>
 
-<div class="new_drink_container">
+<div class="page_content">
   <h2> Add a Drink </h2>
 
-  <%= form_with url: drinks_path, method: :post, data: {turbo: false} do |form| %>
-    <%= form.label :drink_type, "Drink Type:" %>  
-    <%= form.select :drink_type, ['Beer', 'Wine', 'Spirit', 'Seltzer'], selected: 'Beer', class: "form-control" %> <br><br>
+  <div class="new_drink_input">
+    <%= form_with url: drinks_path, method: :post, data: {turbo: false} do |form| %>
+      <%= form.label :drink_type, "Drink Type:" %>  
+      <%= form.select :drink_type, ['Beer', 'Wine', 'Spirit', 'Seltzer'], selected: 'Beer', class: "form-control" %> <br><br>
 
-    <%= form.label :ounces, "Ounces:" %>
-    <%= form.text_field :ounces %>
+      <%= form.label :ounces, "Ounces:" %>
+      <%= form.text_field :ounces %>
 
-    <%= form.label :percentage, "ABV Percentage:" %>
-    <%= form.text_field :percentage %>
+      <%= form.label :percentage, "ABV Percentage:" %>
+      <%= form.text_field :percentage %>
 
-    <%= form.submit "Add Drink" %>
-  <% end %>
+      <%= form.submit "Add Drink" %>
+    <% end %>
+  </div>
 </div>
