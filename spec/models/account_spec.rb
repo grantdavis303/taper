@@ -46,4 +46,104 @@ RSpec.describe Account, type: :model do
       expect(account5.valid?).to eq (true)
     end
   end
+
+  describe 'instance methods' do
+    it '#formatted drinks' do
+      role = Role.create!(name: 'user')
+      user = User.create!(first_name: 'test', last_name: 'test', email: 'test1@test.com', phone_number: '121-456-7891')
+      account = Account.create!(user_id: user.id, role_id: role.id, username: 'testuser1', password: 'Password123!', last_login: 'today')
+      drink1 = account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '3')
+      drink2 = account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '4')
+      drink3 = account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '5')
+      expect(account.formatted_drinks).to eq ([drink3, drink2, drink1])
+    end
+
+    it '#drinks_today_units' do
+      role = Role.create!(name: 'user')
+      user = User.create!(first_name: 'test', last_name: 'test', email: 'test1@test.com', phone_number: '121-456-7891')
+      account = Account.create!(user_id: user.id, role_id: role.id, username: 'testuser1', password: 'Password123!', last_login: 'today')
+      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '3', created_at: Date.today - 1)
+      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '4')
+      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '5')
+      expect(account.drinks_today_units).to eq (3.19)
+    end
+
+    it '#drinks_today_count' do
+      role = Role.create!(name: 'user')
+      user = User.create!(first_name: 'test', last_name: 'test', email: 'test1@test.com', phone_number: '121-456-7891')
+      account = Account.create!(user_id: user.id, role_id: role.id, username: 'testuser1', password: 'Password123!', last_login: 'today')
+      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '3')
+      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '4')
+      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '5')
+      expect(account.drinks_today_count).to eq (3)
+    end
+
+    it '#drinks_week_units' do
+      role = Role.create!(name: 'user')
+      user = User.create!(first_name: 'test', last_name: 'test', email: 'test1@test.com', phone_number: '121-456-7891')
+      account = Account.create!(user_id: user.id, role_id: role.id, username: 'testuser1', password: 'Password123!', last_login: 'today')
+      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '3', created_at: Date.today - 7)
+      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '4')
+      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '5')
+      expect(account.drinks_week_units).to eq (3.19)
+    end
+
+    it '#drinks_week_count' do
+      role = Role.create!(name: 'user')
+      user = User.create!(first_name: 'test', last_name: 'test', email: 'test1@test.com', phone_number: '121-456-7891')
+      account = Account.create!(user_id: user.id, role_id: role.id, username: 'testuser1', password: 'Password123!', last_login: 'today')
+      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '3', created_at: Date.today - 7)
+      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '4')
+      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '5')
+      expect(account.drinks_week_count).to eq (2)
+    end
+
+    it '#drinks_year_units' do
+      role = Role.create!(name: 'user')
+      user = User.create!(first_name: 'test', last_name: 'test', email: 'test1@test.com', phone_number: '121-456-7891')
+      account = Account.create!(user_id: user.id, role_id: role.id, username: 'testuser1', password: 'Password123!', last_login: 'today')
+      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '3', created_at: Date.today - 365)
+      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '4')
+      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '5')
+      expect(account.drinks_year_units).to eq (3.19)
+    end
+
+    it '#drinks_year_count' do
+      role = Role.create!(name: 'user')
+      user = User.create!(first_name: 'test', last_name: 'test', email: 'test1@test.com', phone_number: '121-456-7891')
+      account = Account.create!(user_id: user.id, role_id: role.id, username: 'testuser1', password: 'Password123!', last_login: 'today')
+      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '3', created_at: Date.today - 365)
+      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '4')
+      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '5')
+      expect(account.drinks_year_count).to eq (2)
+    end
+
+    it '#drinks_total_units' do
+      role = Role.create!(name: 'user')
+      user = User.create!(first_name: 'test', last_name: 'test', email: 'test1@test.com', phone_number: '121-456-7891')
+      account = Account.create!(user_id: user.id, role_id: role.id, username: 'testuser1', password: 'Password123!', last_login: 'today')
+      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '3')
+      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '4')
+      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '5')
+      expect(account.drinks_total_units).to eq (4.25)
+    end
+
+    it '#drinks_total_count' do
+      role = Role.create!(name: 'user')
+      user = User.create!(first_name: 'test', last_name: 'test', email: 'test1@test.com', phone_number: '121-456-7891')
+      account = Account.create!(user_id: user.id, role_id: role.id, username: 'testuser1', password: 'Password123!', last_login: 'today')
+      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '3')
+      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '4')
+      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '5')
+      expect(account.drinks_total_count).to eq (3)
+    end
+
+    it '#days_without_drinking' do
+      role = Role.create!(name: 'user')
+      user = User.create!(first_name: 'test', last_name: 'test', email: 'test1@test.com', phone_number: '121-456-7891')
+      account = Account.create!(user_id: user.id, role_id: role.id, username: 'testuser1', password: 'Password123!', last_login: 'today')
+      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '5.2', created_at: Date.today - 2)
+      expect(account.days_without_drinking).to eq (2)
+    end
+  end
 end
