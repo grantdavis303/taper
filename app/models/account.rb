@@ -29,25 +29,25 @@ class Account < ApplicationRecord
 
   def drinks_today_units
     drinks
-      .where("created_at >= '#{Date.today.to_default_s}'")
+      .where("created_at >= '#{Date.today.to_s}'")
       .sum { |drink| drink.units }
   end
 
   def drinks_today_count
     drinks
-      .where("created_at >= '#{Date.today.to_default_s}'")
+      .where("created_at >= '#{Date.today.to_s}'")
       .count
   end
 
   def drinks_week_units
     drinks
-      .where("created_at >= '#{(Date.today - 7).to_default_s}'")
+      .where("created_at > '#{(Date.today - 7).to_s}'")
       .sum { |drink| drink.units }
   end
 
   def drinks_week_count
     drinks
-      .where("created_at >= '#{(Date.today - 7).to_default_s}'")
+      .where("created_at > '#{(Date.today - 7).to_s}'")
       .count
   end
 
@@ -74,6 +74,10 @@ class Account < ApplicationRecord
   end
 
   def days_without_drinking
-    ((Time.now - drinks.last.created_at) / (24 * 60 * 60)).round(0)
+    if drinks.empty?
+      return 0
+    else
+      ((Time.now - drinks.last.created_at) / (24 * 60 * 60)).to_i
+    end
   end
 end
