@@ -10,20 +10,6 @@ This is an application.
 
 This is how the app works.
 
-### Setup
-
-```
-[Fork and clone this repository]
-
-cd [app_name]
-
-bundle install
-rails db:{drop,create,migrate,seed}
-rails s
-
-[Open LocalHost:3000]
-```
-
 ### Versions
 
 - Ruby 3.2.2
@@ -47,9 +33,9 @@ rails s
 
 ### Tests
 
-* 26 Total Tests (124 / 124 LOC (100.0%) covered)
-* 0 Feature Tests (0 / 0 LOC (100.0%) covered)
-* 26 Model Tests (124 / 124 LOC (100.0%) covered)
+* 48 Total Tests (328 / 344 LOC (95.35%) covered)
+* 1 Feature Tests (70 / 86 LOC (81.4%) covered)
+* 47 Model Tests (194 / 194 LOC (100.0%) covered)
 
 **Testing Instructions**
 
