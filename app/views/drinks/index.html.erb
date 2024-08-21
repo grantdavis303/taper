@@ -1,10 +1,10 @@
 <%= render partial: "shared/main_nav" %>
 
 <div class="page_content">
-  <h2> All Drinks </h2>
+  <h2> All Drinks (<%= current_user.drinks_total_count %>)</h2>
 
   <% if current_user.drinks.empty? %>
-    <p> There are currently no drinks </p>
+    <p> There are currently no drinks. </p>
   <% else %>
     <% current_user.formatted_drinks.each do |drink| %>
       <div class='drink'>
