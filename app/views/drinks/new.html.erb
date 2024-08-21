@@ -9,10 +9,10 @@
       <%= form.select :drink_type, ['Beer', 'Wine', 'Spirit', 'Seltzer'], selected: 'Beer', class: "form-control" %> <br><br>
 
       <%= form.label :ounces, "Ounces:" %>
-      <%= form.text_field :ounces, type: 'number' %>
+      <%= form.text_field :ounces, inputmode: 'numeric' %>
 
       <%= form.label :percentage, "ABV Percentage:" %>
-      <%= form.text_field :percentage, type: 'number' %>
+      <%= form.text_field :percentage, inputmode: 'numeric' %>
 
       <%= form.submit "Add Drink" %>
     <% end %>
