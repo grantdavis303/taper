@@ -31,6 +31,7 @@ class Account < ApplicationRecord
     drinks
       .where("created_at >= '#{Date.today.to_s}'")
       .sum { |drink| drink.units }
+      .round(2)
   end
 
   def drinks_today_count
@@ -41,13 +42,14 @@ class Account < ApplicationRecord
 
   def drinks_week_units
     drinks
-      .where("created_at > '#{(Date.today - 7).to_s}'")
+      .where("created_at > '#{(Date.today.at_beginning_of_week).to_s}'")
       .sum { |drink| drink.units }
+      .round(2)
   end
 
   def drinks_week_count
     drinks
-      .where("created_at > '#{(Date.today - 7).to_s}'")
+      .where("created_at > '#{(Date.today.at_beginning_of_week).to_s}'")
       .count
   end
 
@@ -55,6 +57,7 @@ class Account < ApplicationRecord
     drinks
       .where("created_at >= '#{(Date.today.year)}-01-01'")
       .sum { |drink| drink.units }
+      .round(2)
   end
 
   def drinks_year_count
@@ -66,6 +69,7 @@ class Account < ApplicationRecord
   def drinks_total_units
     drinks
       .sum { |drink| drink.units }
+      .round(2)
   end
 
   def drinks_total_count
