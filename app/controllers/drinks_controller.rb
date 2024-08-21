@@ -17,9 +17,12 @@ class DrinksController < ApplicationController
     end
   end
 
-  # def update; end
-
-  # def delete; end
+  def destroy
+    deleted_drink = Drink.find(params[:id])
+    deleted_drink.destroy
+    flash[:success] = 'Drink deleted successfully'
+    redirect_to drinks_path
+  end
 
   private
 
