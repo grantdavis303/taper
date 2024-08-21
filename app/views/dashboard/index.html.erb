@@ -3,18 +3,27 @@
 <div class="page_content">
   <h2> Welcome, <%= current_user.user.first_name %>! </h2>
 
-  <h2> Summary </h2>
+  <!-- <p> You have gone <%= current_user.days_without_drinking %> day(s) without drinking. </p> -->
+  <% if current_user.drinks_week_units <= 14 %>
+    <div class="drink_container" style="background-color: #99ffcc;">
+      <p> You are currently under the recommended 14 units of alcohol per week. Keep it up! </p>
+    </div>
+  <% else %>
+    <div class="drink_container" style="background-color: #ffcccc;">
+      <p> You are currently over the recommended 14 units of alcohol per week. </p>
+    </div>
+  <% end %>
 
-  <p> You have gone <%= current_user.days_without_drinking %> day(s) without drinking. </p>
-
-  <div class="drink_container">
+  <div class="drink_container" style="background-color: #bfffea;">
     <p><b> Today </b></p>
+    <p><b> <%= Date.today.strftime('%A, %B %-d, %Y') %></b></p>
     <p> Units: <%= current_user.drinks_today_units %> </p>
     <p> Drinks: <%= current_user.drinks_today_count %> </p>  
   </div>
 
   <div class="drink_container">
-    <p><b> Past 7 Days </b></p>
+    <p><b> This Week </b></p>
+    <p><b> <%= Date.today.at_beginning_of_week.strftime('%A, %B %-d') %> - <%= Date.today.at_end_of_week.strftime('%A, %B %-d') %> </b></p>
     <p> Units: <%= current_user.drinks_week_units %> </p>
     <p> Drinks: <%= current_user.drinks_week_count %> </p>
   </div>
