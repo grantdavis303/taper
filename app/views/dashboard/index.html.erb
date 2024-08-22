@@ -21,7 +21,7 @@
     <p> Drinks: <%= current_user.drinks_today_count %> </p>  
   </div>
 
-  <div class="drink_container">
+  <div class="drink_container" style="background-color: #bff4ff;">
     <p><b> This Week </b></p>
     <p><b> <%= Date.today.at_beginning_of_week.strftime('%A, %B %-d') %> - <%= Date.today.at_end_of_week.strftime('%A, %B %-d') %> </b></p>
     <p> Units: <%= current_user.drinks_week_units %> </p>
