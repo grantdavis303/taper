@@ -21,8 +21,25 @@
     <p> Drinks: <%= current_user.drinks_today_count %> </p>  
   </div>
 
+  <% if current_user.drinks_week_units == 0 %>
+    <% background_color = '009900' %>
+    <% week_status = 'Perfect' %>
+  <% elsif current_user.drinks_week_units <= 7 %>
+    <% background_color = '00CC00' %>
+    <% week_status = 'Really Good' %>
+  <% elsif current_user.drinks_week_units <= 14 %>
+    <% background_color = 'FFFF00' %>
+    <% week_status = 'Good' %>
+  <% elsif current_user.drinks_week_units <= 21 %>
+    <% background_color = 'CC0000' %>
+    <% week_status = 'Over' %>
+  <% elsif current_user.drinks_week_units > 21 %>
+    <% background_color = '990000' %>
+    <% week_status = 'Really Over' %>
+  <% end %>
+
   <div class="drink_container" style="background-color: #bff4ff;">
-    <p><b> This Week </b></p>
+    <p><b> This Week <span class='week_status' style="background-color: #<%= background_color %>;">Status: <%= week_status %></span></b></p>
     <p><b> <%= Date.today.at_beginning_of_week.strftime('%A, %B %-d') %> - <%= Date.today.at_end_of_week.strftime('%A, %B %-d') %> </b></p>
     <p> Units: <%= current_user.drinks_week_units %> </p>
     <p> Drinks: <%= current_user.drinks_week_count %> </p>
@@ -39,4 +56,10 @@
     <p> Units: <%= current_user.drinks_total_units %> </p>
     <p> Drinks: <%= current_user.drinks_total_count %> </p>
   </div>
+
+  <h2> Weekly Breakdown </h2>
+
+  <% current_user.weekly_breakdown.each do |week| %>
+    <%= week %>
+  <% end %>
 </div>
