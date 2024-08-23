@@ -127,4 +127,11 @@ account.drinks.create!(
   created_at: 'Wed, 21 Aug 2024 12:00:00.000000000 UTC +00:00'
 )
 
+account.drinks.create!(
+  drink_type: 'Beer',
+  ounces: '12',
+  percentage: '7.6',
+  created_at: 'Thur, 22 Aug 2024 12:00:00.000000000 UTC +00:00'
+)
+
 puts "Seeded Successfully"
