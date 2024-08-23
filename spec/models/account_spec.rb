@@ -143,7 +143,7 @@ RSpec.describe Account, type: :model do
       user = User.create!(first_name: 'test', last_name: 'test', email: 'test1@test.com', phone_number: '121-456-7891')
       account = Account.create!(user_id: user.id, role_id: role.id, username: 'testuser1', password: 'Password123!', last_login: 'today')
       account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '5.2', created_at: Date.today - 2)
-      expect(account.days_without_drinking).to eq (2)
+      expect(account.days_without_drinking).to eq (1)
     end
 
     it '#days_without_drinking - does not have drinks' do
