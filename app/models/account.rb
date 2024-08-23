@@ -84,4 +84,10 @@ class Account < ApplicationRecord
       ((Time.now - drinks.last.created_at) / (24 * 60 * 60)).to_i
     end
   end
+
+  def weekly_breakdown
+    total_weeks = (((Date.today.beginning_of_year - Date.today.end_of_week).to_i / 7) * -1)
+    array = Array.new(total_weeks, 1)
+    array.each { |week| week }
+  end
 end
