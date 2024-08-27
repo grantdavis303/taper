@@ -48,4 +48,10 @@ RSpec.describe 'Drinks Index', type: :feature do
 
   xit 'has content for multiple drinks' do
   end
+
+  xit 'successfully updates a drink' do
+  end
+
+  xit 'successfully deletes a drink' do
+  end
 end
