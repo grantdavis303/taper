@@ -8,7 +8,7 @@ Taper is a web application designed to track a user's alcohol consumption.
 
 ### How It Works
 
-I truthfully don't know how the app works. Sike - coming soon.
+Coming soon.
 
 ### Versions
 
@@ -21,9 +21,9 @@ Coming soon.
 
 ### Tests
 
-* 48 Total Tests (328 / 344 LOC (95.35%) covered)
-* 1 Feature Tests (70 / 86 LOC (81.4%) covered)
-* 47 Model Tests (194 / 194 LOC (100.0%) covered)
+* 63 Total Tests (511 / 530 LOC (96.42%) covered), 6 Pending
+* 13 Feature Tests (277 / 303 LOC (91.42%) covered), 6 Pending
+* 50 Model Tests (224 / 224 LOC (100.0%) covered)
 
 ### Resources
 
