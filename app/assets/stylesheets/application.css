@@ -31,14 +31,19 @@ span.red {
 }
 
 a.delete_drink {
-  color: #e00083;
+  background-color: #e00083;
+  color: white;
   text-decoration: none;
   font-weight: bold;
+  padding: 1px 4px;
+  border: 2px solid #e00083;
+  border-radius: 4px;
 }
 
 a.delete_drink:hover {
   transition: 1s;
-  color: red;
+  background-color: #ff0000;
+  border-color: #ff0000;
 }
 
 /* Logo */
@@ -71,6 +76,7 @@ div.flash_message {
   text-align: center;
   border-radius: 4px;
   animation: fade_in_out 5s;
+  position: static;
 }
 
 div.flash_message.error {
@@ -149,10 +155,12 @@ li a.active:hover {
 
 /* Drink */
 div.drink {
-  background-color: #7fffd4;
-  border: 2px solid #000000; /* Could change to #72e6bf */
+  background-color: #bfffea;
+  /* border: 2px solid #000000;  Could change to #72e6bf */
   border-radius: 4px;
   margin-bottom: 20px;
+  padding-top: 4px; /* Delete if border */
+  padding-bottom: 4px; /* Delete if border */
   padding-left: 15px;
   padding-right: 15px;
   max-width: 400px;
@@ -166,9 +174,11 @@ div.new_drink_input {
 /* Drink Container */
 div.drink_container {
   background-color: #f0f0f0;
-  border: 2px solid rgb(0, 0, 0);
-  border-radius: 4px;
+  /* border: 2px solid rgb(0, 0, 0); */
+  border-radius: 10px;
   margin-bottom: 20px;
+  padding-top: 4px; /* Delete if border */
+  padding-bottom: 4px; /* Delete if border */
   padding-left: 15px;
   padding-right: 15px;
   max-width: 400px;

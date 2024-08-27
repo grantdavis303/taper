@@ -22,73 +22,130 @@ class Account < ApplicationRecord
     end
   end
 
-  def formatted_drinks
+  def all_drinks_in_reverse_order
     drinks
       .reverse
   end
 
-  def drinks_today_units
+  def drink_units_today
     drinks
       .where("created_at >= '#{Date.today.to_s}'")
       .sum { |drink| drink.units }
       .round(2)
   end
 
-  def drinks_today_count
+  def drink_count_today
     drinks
       .where("created_at >= '#{Date.today.to_s}'")
       .count
   end
 
-  def drinks_week_units
+  def drink_units_this_week
     drinks
       .where("created_at > '#{(Date.today.at_beginning_of_week).to_s}'")
       .sum { |drink| drink.units }
       .round(2)
   end
 
-  def drinks_week_count
+  def drink_count_this_week
     drinks
       .where("created_at > '#{(Date.today.at_beginning_of_week).to_s}'")
       .count
   end
 
-  def drinks_year_units
+  def drink_units_this_year
     drinks
       .where("created_at >= '#{(Date.today.year)}-01-01'")
       .sum { |drink| drink.units }
       .round(2)
   end
 
-  def drinks_year_count
+  def drink_count_this_year
     drinks
       .where("created_at >= '#{(Date.today.year)}-01-01'")
       .count
   end
 
-  def drinks_total_units
+  def drink_units_all_time
     drinks
       .sum { |drink| drink.units }
       .round(2)
   end
 
-  def drinks_total_count
+  def drink_count_all_time
     drinks
       .count
   end
 
-  def days_without_drinking
-    if drinks.empty?
-      return 0
+  def drink_units_specific(start_date, end_date)
+    drinks
+      .where("created_at >= '#{start_date}' AND created_at < '#{end_date + 1}'")
+      .sum { |drink| drink.units }
+      .round(2)
+  end
+
+  def drink_count_specific(start_date, end_date)
+    drinks
+      .where("created_at >= '#{start_date}' AND created_at < '#{end_date + 1}'") # <= make sense?
+      .count
+  end
+
+  def weeks_this_year # Date.today.cweek
+    (((Date.today.beginning_of_year - Date.today.end_of_week).to_i / 7) * -1)
+  end
+
+  def weeks_status_count(status_type)
+    weekly_breakdown = generate_weekly_breakdown
+
+    if status_type == 'Perfect'
+      weekly_breakdown.map { |week| week[:units] if week[:units] == 0 }
+        .compact
+        .count
+    elsif status_type == 'Really Good'
+      weekly_breakdown.map { |week| week[:units] if week[:units] > 0 && week[:units] <= 7 }
+        .compact
+        .count
+    elsif status_type == 'Good'
+      weekly_breakdown.map { |week| week[:units] if week[:units] > 7 && week[:units] <= 14 }
+        .compact
+        .count
+    elsif status_type == 'Over'
+      weekly_breakdown.map { |week| week[:units] if week[:units] > 14 && week[:units] <= 21 }
+        .compact
+        .count
     else
-      ((Time.now - drinks.last.created_at) / (24 * 60 * 60)).to_i
+      weekly_breakdown.map { |week| week[:units] if week[:units] > 21 }
+        .compact
+        .count
     end
   end
 
-  def weekly_breakdown
-    total_weeks = (((Date.today.beginning_of_year - Date.today.end_of_week).to_i / 7) * -1)
-    array = Array.new(total_weeks, 1)
-    array.each { |week| week }
-    # Date.today.cweek
+  def generate_weekly_breakdown
+    total_weeks = weeks_this_year
+    current_day = 0
+    week_number = 1
+    array = Array.new
+
+    total_weeks.times do
+      week_start = Date.today.beginning_of_year + current_day
+      week_end = Date.today.beginning_of_year + current_day + 6
+      units = drink_units_specific(week_start, week_end)
+      drinks = drink_count_specific(week_start, week_end)
+
+      week = {
+        count: week_number,
+        start: week_start,
+        end: week_end,
+        units: units,
+        drinks: drinks
+      }
+
+      week_number += 1
+      current_day += 7
+
+      array << week
+    end
+
+    array.reverse
   end
 end

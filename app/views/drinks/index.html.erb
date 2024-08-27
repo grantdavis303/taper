@@ -1,19 +1,19 @@
 <%= render partial: "shared/main_nav" %>
 
 <div class="page_content">
-  <h2> All Drinks (<%= current_user.drinks_total_count %>)</h2>
+  <h2> All Drinks (<%= current_user.drink_count_all_time %>)</h2>
 
   <% if current_user.drinks.empty? %>
     <p> There are currently no drinks. </p>
   <% else %>
-    <% current_user.formatted_drinks.each do |drink| %>
+    <% current_user.all_drinks_in_reverse_order.each do |drink| %>
       <div class='drink'>
         <p> Type: <%= drink.drink_type %> </p>
         <p> Ounces: <%= drink.ounces %> </p>
         <p> ABV%: <%= drink.percentage %> </p>
         <p> Units: <%= drink.units %> </p>
         <p> Created: <%= drink.formatted_created_at %> </p>
-        <p> <%= link_to 'Delete Drink', drink_path(drink), data: {turbo_method: :delete}, class: 'delete_drink' %> </p>
+        <p class='delete_drink'> <%= link_to 'Delete Drink', drink_path(drink), data: {turbo_method: :delete}, class: 'delete_drink' %> </p>
       </div>
     <% end %>
   <% end %>
