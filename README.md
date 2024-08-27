@@ -4,11 +4,11 @@
 
 ### About
 
-This is an application.
+Taper is a web application designed to track a user's alcohol consumption.
 
 ### How It Works
 
-This is how the app works.
+I truthfully don't know how the app works. Sike - coming soon.
 
 ### Versions
 
@@ -17,33 +17,13 @@ This is how the app works.
 
 ### Database Schema
 
-![database_schema](public/Schema.png)
-
-### Features Added
-
-- [x] User Authentication
-- [x] Role-Based Authorization
-- [ ] Google OAuth
-- [ ] GitHub OAuth
-- [x] CI/CD
-- [ ] Mobile Responsiveness
-- [ ] Text Notifications
-- [ ] Email Notifications
-- [ ] 2 Factor Authentication
+Coming soon.
 
 ### Tests
 
 * 48 Total Tests (328 / 344 LOC (95.35%) covered)
 * 1 Feature Tests (70 / 86 LOC (81.4%) covered)
 * 47 Model Tests (194 / 194 LOC (100.0%) covered)
-
-**Testing Instructions**
-
-```
-rails db:{drop,create,migrate,seed}
-bundle exec rspec spec
-open coverage/index.html
-```
 
 ### Resources
 
