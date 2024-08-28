@@ -98,7 +98,7 @@ class Account < ApplicationRecord
     weekly_breakdown = generate_weekly_breakdown
 
     if status_type == 'Perfect'
-      weekly_breakdown.map { |week| week[:units] if week[:units] == 0 }
+      weekly_breakdown.map { |week| week[:units] if (week[:units] == 0 && week[:start] > drinks.first.created_at.beginning_of_week.to_date) }
         .compact
         .count
     elsif status_type == 'Really Good'
@@ -113,8 +113,12 @@ class Account < ApplicationRecord
       weekly_breakdown.map { |week| week[:units] if week[:units] > 14 && week[:units] <= 21 }
         .compact
         .count
-    else
+    elsif status_type == 'Really Over'
       weekly_breakdown.map { |week| week[:units] if week[:units] > 21 }
+        .compact
+        .count
+    else
+      weekly_breakdown.map { |week| week[:units] if week[:start] < drinks.first.created_at.beginning_of_week.to_date }
         .compact
         .count
     end
