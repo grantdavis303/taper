@@ -71,9 +71,16 @@
     <p><b> Good Weeks: <%= current_user.weeks_status_count('Good') %> </b></p>
     <p><b> Over Weeks: <%= current_user.weeks_status_count('Over') %> </b></p>
     <p><b> Really Over Weeks: <%= current_user.weeks_status_count('Really Over') %> </b></p>
+    <p><b> Untracked Weeks: <%= current_user.weeks_status_count('Untracked') %> </b></p>
   </div>
 
   <% current_user.generate_weekly_breakdown.each do |week| %>
+
+  <% if week[:start] < current_user.drinks.first.created_at.beginning_of_week.to_date %>
+    <% background_color = 'CCCCCC' %>
+    <% font_color = '000000' %>
+    <% week_status = 'Untracked' %>
+  <% else %>
     <% if current_user.drink_units_specific(week[:start], week[:end]) == 0 %>
       <% background_color = '009900' %>
       <% font_color = 'FFFFFF' %>
@@ -95,6 +102,7 @@
       <% font_color = 'FFFFFF' %>
       <% week_status = 'Really Over' %>
     <% end %>
+  <% end %>
 
     <div class="drink_container">
       <p><b> Week <%= week[:count] %> <span class='week_status' style="background-color: #<%= background_color %>; border-color: #<%= background_color %>; color: #<%= font_color %>;"><%= week_status %></span></b></p>
