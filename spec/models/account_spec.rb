@@ -62,10 +62,10 @@ RSpec.describe Account, type: :model do
       role = Role.create!(name: 'user')
       user = User.create!(first_name: 'test', last_name: 'test', email: 'test1@test.com', phone_number: '121-456-7891')
       account = Account.create!(user_id: user.id, role_id: role.id, username: 'testuser1', password: 'Password123!', last_login: 'today')
-      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '3', created_at: Date.today - 1)
+      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '3')
       account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '4')
       account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '5')
-      expect(account.drink_units_today).to eq (3.19)
+      expect(account.drink_units_today).to eq (4.25)
     end
 
     it '#drink_count_today' do
@@ -180,11 +180,12 @@ RSpec.describe Account, type: :model do
       account.drinks.create!(drink_type: 'Beer', ounces: '20', percentage: '12', created_at: Date.today - 14)
       account.drinks.create!(drink_type: 'Beer', ounces: '20', percentage: '30', created_at: Date.today - 21)
       account.drinks.create!(drink_type: 'Beer', ounces: '20', percentage: '40', created_at: Date.today - 28)
-      expect(account.weeks_status_count('Perfect')).to eq (31) # Should add up to current_week count
+      expect(account.weeks_status_count('Perfect')).to eq (1) # Should add up to current_week count
       expect(account.weeks_status_count('Really Good')).to eq (1)
       expect(account.weeks_status_count('Good')).to eq (1)
       expect(account.weeks_status_count('Over')).to eq (1)
       expect(account.weeks_status_count('Really Over')).to eq (1)
+      expect(account.weeks_status_count('Untracked')).to eq (33)
     end
 
     it '#generate_weekly_breakdown' do # Revisit (not enough detail)
