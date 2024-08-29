@@ -29,14 +29,14 @@ class Account < ApplicationRecord
 
   def drink_units_today
     drinks
-      .where("created_at = '#{Date.today.to_s}'")
+      .where("created_at >= '#{Time.current.beginning_of_day.to_date.to_s}'")
       .sum { |drink| drink.units }
       .round(2)
   end
 
   def drink_count_today
     drinks
-      .where("created_at = '#{Date.today.to_s}'")
+      .where("created_at >= '#{Time.current.beginning_of_day.to_date.to_s}'")
       .count
   end
 
@@ -86,7 +86,7 @@ class Account < ApplicationRecord
 
   def drink_count_specific(start_date, end_date)
     drinks
-      .where("created_at >= '#{start_date}' AND created_at < '#{end_date + 1}'") # <= make sense?
+      .where("created_at >= '#{start_date}' AND created_at < '#{end_date + 1}'") # <= does this even make sense?
       .count
   end
 
@@ -114,12 +114,22 @@ class Account < ApplicationRecord
         drinks: user_drinks
       }
 
-      if week[:start] < drinks.first.created_at.beginning_of_week.to_date
-        week[:background_color] = 'CCCCCC'
-        week[:font_color] = '000000'
-        week[:week_status] = 'Untracked'
+      if drinks.count == 0
+        if Time.current.beginning_of_week.to_date == week[:start]
+          week[:background_color] = '009900'
+          week[:font_color] = 'FFFFFF'
+          week[:week_status] = 'Perfect'
+        else
+          week[:background_color] = 'CCCCCC'
+          week[:font_color] = '000000'
+          week[:week_status] = 'Untracked'
+        end
       else
-        if drink_units_specific(week[:start], week[:end]) == 0
+        if week[:start] < drinks.first.created_at.beginning_of_week.to_date
+          week[:background_color] = 'CCCCCC'
+          week[:font_color] = '000000'
+          week[:week_status] = 'Untracked'
+        elsif drink_units_specific(week[:start], week[:end]) == 0
           week[:background_color] = '009900'
           week[:font_color] = 'FFFFFF'
           week[:week_status] = 'Perfect'
@@ -144,7 +154,6 @@ class Account < ApplicationRecord
 
       week_number += 1
       current_day += 7
-
       array << week
     end
 
@@ -154,7 +163,9 @@ class Account < ApplicationRecord
   def weeks_status_count(status_type)
     weekly_breakdown = generate_weekly_breakdown
 
-    if status_type == 'Perfect'
+    if drinks.count == 0
+      return 0
+    elsif status_type == 'Perfect'
       weekly_breakdown.map { |week| week[:units] if (week[:units] == 0 && week[:start] > drinks.first.created_at.beginning_of_week.to_date) }
         .compact
         .count
@@ -174,7 +185,7 @@ class Account < ApplicationRecord
       weekly_breakdown.map { |week| week[:units] if week[:units] > 21 }
         .compact
         .count
-    else
+    elsif status_type == 'Untracked'
       weekly_breakdown.map { |week| week[:units] if week[:start] < drinks.first.created_at.beginning_of_week.to_date }
         .compact
         .count
