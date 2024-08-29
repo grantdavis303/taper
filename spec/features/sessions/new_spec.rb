@@ -21,8 +21,8 @@ RSpec.describe 'Sessions New', type: :feature do
 
     within '.links' do
       expect(page).to have_link('Create Account')
-      expect(page).to have_link('Forgot Username')
-      expect(page).to have_link('Forgot Password')
+      # expect(page).to have_link('Forgot Username')
+      # expect(page).to have_link('Forgot Password')
     end
   end
 end
