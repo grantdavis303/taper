@@ -29,14 +29,14 @@ class Account < ApplicationRecord
 
   def drink_units_today
     drinks
-      .where("created_at >= '#{Date.today.to_s}'")
+      .where("created_at = '#{Date.today.to_s}'")
       .sum { |drink| drink.units }
       .round(2)
   end
 
   def drink_count_today
     drinks
-      .where("created_at >= '#{Date.today.to_s}'")
+      .where("created_at = '#{Date.today.to_s}'")
       .count
   end
 
@@ -90,8 +90,65 @@ class Account < ApplicationRecord
       .count
   end
 
-  def weeks_this_year # Date.today.cweek
-    (((Date.today.beginning_of_year - Date.today.end_of_week).to_i / 7) * -1)
+  def weeks_this_year
+    Date.today.cweek
+  end
+
+  def generate_weekly_breakdown
+    total_weeks = weeks_this_year
+    current_day = 0
+    week_number = 1
+    array = Array.new
+
+    total_weeks.times do
+      week_start = Date.today.beginning_of_year + current_day
+      week_end = Date.today.beginning_of_year + current_day + 6
+      units = drink_units_specific(week_start, week_end)
+      user_drinks = drink_count_specific(week_start, week_end)
+
+      week = {
+        count: week_number,
+        start: week_start,
+        end: week_end,
+        units: units,
+        drinks: user_drinks
+      }
+
+      if week[:start] < drinks.first.created_at.beginning_of_week.to_date
+        week[:background_color] = 'CCCCCC'
+        week[:font_color] = '000000'
+        week[:week_status] = 'Untracked'
+      else
+        if drink_units_specific(week[:start], week[:end]) == 0
+          week[:background_color] = '009900'
+          week[:font_color] = 'FFFFFF'
+          week[:week_status] = 'Perfect'
+        elsif drink_units_specific(week[:start], week[:end]) <= 7
+          week[:background_color] = '00CC00'
+          week[:font_color] = 'FFFFFF'
+          week[:week_status] = 'Really Good'
+        elsif drink_units_specific(week[:start], week[:end]) <= 14
+          week[:background_color] = 'E5FFCC'
+          week[:font_color] = '000000'
+          week[:week_status] = 'Good'
+        elsif drink_units_specific(week[:start], week[:end]) <= 21
+          week[:background_color] = 'CC0000'
+          week[:font_color] = 'FFFFFF'
+          week[:week_status] = 'Over'
+        elsif drink_units_specific(week[:start], week[:end]) > 21
+          week[:background_color] = '990000'
+          week[:font_color] = 'FFFFFF'
+          week[:week_status] = 'Really Over'
+        end
+      end
+
+      week_number += 1
+      current_day += 7
+
+      array << week
+    end
+
+    array.reverse
   end
 
   def weeks_status_count(status_type)
@@ -122,34 +179,5 @@ class Account < ApplicationRecord
         .compact
         .count
     end
-  end
-
-  def generate_weekly_breakdown
-    total_weeks = weeks_this_year
-    current_day = 0
-    week_number = 1
-    array = Array.new
-
-    total_weeks.times do
-      week_start = Date.today.beginning_of_year + current_day
-      week_end = Date.today.beginning_of_year + current_day + 6
-      units = drink_units_specific(week_start, week_end)
-      drinks = drink_count_specific(week_start, week_end)
-
-      week = {
-        count: week_number,
-        start: week_start,
-        end: week_end,
-        units: units,
-        drinks: drinks
-      }
-
-      week_number += 1
-      current_day += 7
-
-      array << week
-    end
-
-    array.reverse
   end
 end
