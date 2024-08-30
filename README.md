@@ -8,7 +8,13 @@ Taper is a web application designed to track a user's alcohol consumption.
 
 ### How It Works
 
-Coming soon.
+Users first create an account and then login to the application, where they will see three different pages:
+
+* The Dashboard Page - A page that lists the total alcoholic units and total drink count consumed for today, the current week, the current year, as well as all-time. Additionally, there is a weekly breakdown section where each week lists the units and drink count consumed from that particular week.
+
+* The New Drink Page - A page that allows a user to enter a new drink to track by entering a drink's ounces and alcohol-by-volume (ABV) percentage.
+
+* The All Drinks Page - A page that lists all of a user's logged drinks.
 
 ### Versions
 
