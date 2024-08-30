@@ -29,40 +29,40 @@ class Account < ApplicationRecord
 
   def drink_units_today
     drinks
-      .where(created_at: Date.today.beginning_of_day..Date.today.end_of_day) # ("drinks.created_at = '#{Time.current.beginning_of_day.to_date.to_s}'")
+      .where(created_at: Time.current.beginning_of_day..Time.current.end_of_day) # ("drinks.created_at = '#{Time.current.beginning_of_day.to_date.to_s}'")
       .sum { |drink| drink.units }
       .round(2)
   end
 
   def drink_count_today
     drinks
-      .where(created_at: Date.today.beginning_of_day..Date.today.end_of_day)
+      .where(created_at: Time.current.beginning_of_day..Time.current.end_of_day)
       .count
   end
 
   def drink_units_this_week
     drinks
-      .where("created_at > '#{(Date.today.at_beginning_of_week).to_s}'")
+      .where(created_at: Time.current.beginning_of_week..Time.current.end_of_week) # ("created_at > '#{(Date.today.at_beginning_of_week).to_s}'")
       .sum { |drink| drink.units }
       .round(2)
   end
 
   def drink_count_this_week
     drinks
-      .where("created_at > '#{(Date.today.at_beginning_of_week).to_s}'")
+      .where(created_at: Time.current.beginning_of_week..Time.current.end_of_week) # .where("created_at > '#{(Date.today.at_beginning_of_week).to_s}'")
       .count
   end
 
   def drink_units_this_year
     drinks
-      .where("created_at >= '#{(Date.today.year)}-01-01'")
+      .where(created_at: Time.current.beginning_of_year..Time.current.end_of_year) # v.where("created_at >= '#{(Date.today.year)}-01-01'")
       .sum { |drink| drink.units }
       .round(2)
   end
 
   def drink_count_this_year
     drinks
-      .where("created_at >= '#{(Date.today.year)}-01-01'")
+      .where(created_at: Time.current.beginning_of_year..Time.current.end_of_year) # .where("created_at >= '#{(Date.today.year)}-01-01'")
       .count
   end
 
