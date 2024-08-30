@@ -29,14 +29,14 @@ class Account < ApplicationRecord
 
   def drink_units_today
     drinks
-      .where("created_at = '#{Time.current.beginning_of_day.to_date.to_s}'")
+      .where(created_at: Date.today.beginning_of_day..Date.today.end_of_day) # ("drinks.created_at = '#{Time.current.beginning_of_day.to_date.to_s}'")
       .sum { |drink| drink.units }
       .round(2)
   end
 
   def drink_count_today
     drinks
-      .where("created_at = '#{Time.current.beginning_of_day.to_date.to_s}'")
+      .where(created_at: Date.today.beginning_of_day..Date.today.end_of_day)
       .count
   end
 
