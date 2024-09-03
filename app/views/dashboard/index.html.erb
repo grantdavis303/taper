@@ -3,6 +3,8 @@
 <div class="page_content">
   <h2> Welcome, <%= current_user.user.first_name %>! </h2>
 
+  <h2> Summary </h2>
+
   <% if current_user.drink_units_this_week <= 14 %>
     <div class="drink_container" style="background-color: #99ffcc;">
       <p> You are currently under the recommended 14 units of alcohol per week. Keep it up! </p>
@@ -47,6 +49,12 @@
     <p><b> <%= Date.today.at_beginning_of_week.strftime('%A, %B %-d') %> - <%= Date.today.at_end_of_week.strftime('%A, %B %-d') %> </b></p>
     <p> Units: <%= current_user.drink_units_this_week %> </p>
     <p> Drinks: <%= current_user.drink_count_this_week %> </p>
+  </div>
+
+  <div class="drink_container">
+    <p><b> This Month (<%= Date.today.strftime('%B') %>) </b></p>
+    <p> Units: <%= current_user.drink_units_this_month %> </p>
+    <p> Drinks: <%= current_user.drink_count_this_month %> </p>
   </div>
 
   <div class="drink_container">

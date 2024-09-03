@@ -53,6 +53,19 @@ class Account < ApplicationRecord
       .count
   end
 
+  def drink_units_this_month
+    drinks
+      .where(created_at: Time.current.beginning_of_month..Time.current.end_of_month) # ("created_at > '#{(Date.today.at_beginning_of_week).to_s}'")
+      .sum { |drink| drink.units }
+      .round(2)
+  end
+
+  def drink_count_this_month
+    drinks
+      .where(created_at: Time.current.beginning_of_month..Time.current.end_of_month) # .where("created_at > '#{(Date.today.at_beginning_of_week).to_s}'")
+      .count
+  end
+
   def drink_units_this_year
     drinks
       .where(created_at: Time.current.beginning_of_year..Time.current.end_of_year) # v.where("created_at >= '#{(Date.today.year)}-01-01'")
