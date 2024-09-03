@@ -17,8 +17,22 @@ class DrinksController < ApplicationController
     end
   end
 
+  def edit
+    drink_id = params[:id].to_i
+    @updated_drink = Drink.find(drink_id)
+  end
+
+  def update
+    drink_id = params[:id].to_i
+    updated_drink = Drink.find(drink_id)
+    updated_drink.update!(drink_params)
+    flash[:success] = 'Drink updated successfully'
+    redirect_to drinks_path
+  end
+
   def destroy
-    deleted_drink = Drink.find(params[:id])
+    drink_id = params[:id].to_i
+    deleted_drink = Drink.find(drink_id)
     deleted_drink.destroy
     flash[:success] = 'Drink deleted successfully'
     redirect_to drinks_path

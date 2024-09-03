@@ -52,6 +52,22 @@ a.delete_drink:hover {
   border-color: #ff0000;
 }
 
+a.update_drink {
+  background-color: #0056e0;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 1px 4px;
+  border: 2px solid #0056e0;
+  border-radius: 4px;
+}
+
+a.update_drink:hover {
+  transition: 1s;
+  background-color: #170fae;
+  border-color: #170fae;
+}
+
 a.create_account {
   color: rgb(0, 0, 0);
   text-decoration: none;
@@ -167,6 +183,11 @@ li a.active:hover {
 }
 
 /* Drink */
+p.delete_drink, p.update_drink {
+  margin-top: 0;
+  display: inline-block;
+}
+
 div.drink {
   background-color: #bfffea;
   /* border: 2px solid #000000;  Could change to #72e6bf */

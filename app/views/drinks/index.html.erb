@@ -14,6 +14,7 @@
         <p> Units: <%= drink.units %> </p>
         <p> Created: <%= drink.formatted_created_at %> </p>
         <p class='delete_drink'> <%= link_to 'Delete Drink', drink_path(drink), data: {turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete this drink?'}, class: 'delete_drink' %> </p>
+        <p class='update_drink'> <%= link_to 'Update Drink', edit_drink_path(drink), class: 'update_drink' %> </p>
       </div>
     <% end %>
   <% end %>

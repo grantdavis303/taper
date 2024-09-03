@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :password_reset, only: [:index]
 
   resources :dashboard, only: [:index]
-  resources :drinks, only: [:index, :new, :create, :destroy]
+  resources :drinks, only: [:index, :new, :create, :edit, :update, :destroy]
 
   get '*path' => redirect('/')
   get 'up' => 'rails/health#show', as: :rails_health_check
