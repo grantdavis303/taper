@@ -30,8 +30,7 @@ RSpec.describe Drink, type: :model do
         user_id: user.id,
         role_id: role.id,
         username: 'testuser1',
-        password: 'Password123!',
-        last_login: 'Does not matter',
+        password: 'Password123!'
       )
       new_drink = account.drinks.create!(
         drink_type: 'Beer',
@@ -55,8 +54,7 @@ RSpec.describe Drink, type: :model do
         user_id: user.id,
         role_id: role.id,
         username: 'testuser1',
-        password: 'Password123!',
-        last_login: 'Does not matter',
+        password: 'Password123!'
       )
       new_drink1 = account.drinks.create!(
         drink_type: 'Beer',
