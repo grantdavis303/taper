@@ -23,13 +23,13 @@ Users first create an account and then login to the application, where they will
 
 ### Database Schema
 
-Coming soon.
+![db_schema](public/db_schema.png)
 
 ### Tests
 
-* 63 Total Tests (511 / 530 LOC (96.42%) covered), 6 Pending
-* 13 Feature Tests (277 / 303 LOC (91.42%) covered), 6 Pending
-* 50 Model Tests (224 / 224 LOC (100.0%) covered)
+* 68 Total Tests (610 / 638 LOC (95.61%) covered), 7 Pending
+* 14 Feature Tests (288 / 341 LOC (84.46%) covered), 7 Pending
+* 54 Model Tests (250 / 250 LOC (100.0%) covered)
 
 ### Resources
 
