@@ -4,7 +4,7 @@ RSpec.describe 'Drinks Index', type: :feature do
   before(:each) do
     role = Role.create!(name: 'user')
     user = User.create!(first_name: 'test', last_name: 'test', email: 'test1@test.com', phone_number: '121-456-7891')
-    account = Account.create!(user_id: user.id, role_id: role.id, username: 'testuser1', password: 'Password123!', last_login: 'today')
+    account = Account.create!(user_id: user.id, role_id: role.id, username: 'testuser1', password: 'Password123!')
 
     visit root_path
 
