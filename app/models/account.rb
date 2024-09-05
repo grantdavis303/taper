@@ -3,7 +3,6 @@ class Account < ApplicationRecord
   validates :role_id, presence: true, numericality: true
   validates :username, presence: true, uniqueness: true
   validates :password, presence: true, confirmation: true, length: { minimum: 8, maximum: 64 }
-  validates :last_login, presence: true
   validate :valid_password
   has_secure_password
 
@@ -22,14 +21,25 @@ class Account < ApplicationRecord
     end
   end
 
+  # Basic Queries
+
   def all_drinks_in_reverse_order
     drinks
       .reverse
   end
 
+  def weeks_this_year
+    Time
+      .current
+      .to_datetime
+      .cweek
+  end
+
+  # Drink Units and Counts
+
   def drink_units_today
     drinks
-      .where(created_at: Time.current.beginning_of_day..Time.current.end_of_day) # ("drinks.created_at = '#{Time.current.beginning_of_day.to_date.to_s}'")
+      .where(created_at: Time.current.beginning_of_day..Time.current.end_of_day)
       .sum { |drink| drink.units }
       .round(2)
   end
@@ -42,40 +52,40 @@ class Account < ApplicationRecord
 
   def drink_units_this_week
     drinks
-      .where(created_at: Time.current.beginning_of_week..Time.current.end_of_week) # ("created_at > '#{(Date.today.at_beginning_of_week).to_s}'")
+      .where(created_at: Time.current.beginning_of_week..Time.current.end_of_week)
       .sum { |drink| drink.units }
       .round(2)
   end
 
   def drink_count_this_week
     drinks
-      .where(created_at: Time.current.beginning_of_week..Time.current.end_of_week) # .where("created_at > '#{(Date.today.at_beginning_of_week).to_s}'")
+      .where(created_at: Time.current.beginning_of_week..Time.current.end_of_week)
       .count
   end
 
   def drink_units_this_month
     drinks
-      .where(created_at: Time.current.beginning_of_month..Time.current.end_of_month) # ("created_at > '#{(Date.today.at_beginning_of_week).to_s}'")
+      .where(created_at: Time.current.beginning_of_month..Time.current.end_of_month)
       .sum { |drink| drink.units }
       .round(2)
   end
 
   def drink_count_this_month
     drinks
-      .where(created_at: Time.current.beginning_of_month..Time.current.end_of_month) # .where("created_at > '#{(Date.today.at_beginning_of_week).to_s}'")
+      .where(created_at: Time.current.beginning_of_month..Time.current.end_of_month)
       .count
   end
 
   def drink_units_this_year
     drinks
-      .where(created_at: Time.current.beginning_of_year..Time.current.end_of_year) # v.where("created_at >= '#{(Date.today.year)}-01-01'")
+      .where(created_at: Time.current.beginning_of_year..Time.current.end_of_year)
       .sum { |drink| drink.units }
       .round(2)
   end
 
   def drink_count_this_year
     drinks
-      .where(created_at: Time.current.beginning_of_year..Time.current.end_of_year) # .where("created_at >= '#{(Date.today.year)}-01-01'")
+      .where(created_at: Time.current.beginning_of_year..Time.current.end_of_year)
       .count
   end
 
@@ -103,105 +113,85 @@ class Account < ApplicationRecord
       .count
   end
 
-  def weeks_this_year
-    Date.today.cweek
+  # Weekly Breakdowns
+
+  def generate_single_week_breakdown
+    start_date = Date.today.beginning_of_week
+    end_date = Date.today.end_of_week
+    week = {
+      start: start_date,
+      end: end_date,
+      units: drink_units_specific(start_date, end_date),
+      drinks: drink_count_specific(start_date, end_date)
+    }
+
+    determine_week_design(week)
+    week
   end
 
   def generate_weekly_breakdown
+    list_of_weeks = Array.new
     total_weeks = weeks_this_year
     current_day = 0
     week_number = 1
-    array = Array.new
 
     total_weeks.times do
-      week_start = Date.today.beginning_of_year + current_day
-      week_end = Date.today.beginning_of_year + current_day + 6
-      units = drink_units_specific(week_start, week_end)
-      user_drinks = drink_count_specific(week_start, week_end)
-
+      start_date = Date.today.beginning_of_year + current_day
+      end_date = Date.today.beginning_of_year + current_day + 6
       week = {
         count: week_number,
-        start: week_start,
-        end: week_end,
-        units: units,
-        drinks: user_drinks
+        start: start_date,
+        end: end_date,
+        units: drink_units_specific(start_date, end_date),
+        drinks: drink_count_specific(start_date, end_date)
       }
 
-      if drinks.count == 0
-        if Time.current.beginning_of_week.to_date == week[:start]
-          week[:background_color] = '009900'
-          week[:font_color] = 'FFFFFF'
-          week[:week_status] = 'Perfect'
-        else
-          week[:background_color] = 'CCCCCC'
-          week[:font_color] = '000000'
-          week[:week_status] = 'Untracked'
-        end
+      if week[:start] >= created_at.beginning_of_week.to_date
+        determine_week_design(week)
       else
-        if week[:start] < drinks.first.created_at.beginning_of_week.to_date
-          week[:background_color] = 'CCCCCC'
-          week[:font_color] = '000000'
-          week[:week_status] = 'Untracked'
-        elsif drink_units_specific(week[:start], week[:end]) == 0
-          week[:background_color] = '009900'
-          week[:font_color] = 'FFFFFF'
-          week[:week_status] = 'Perfect'
-        elsif drink_units_specific(week[:start], week[:end]) <= 7
-          week[:background_color] = '00CC00'
-          week[:font_color] = 'FFFFFF'
-          week[:week_status] = 'Really Good'
-        elsif drink_units_specific(week[:start], week[:end]) <= 14
-          week[:background_color] = 'E5FFCC'
-          week[:font_color] = '000000'
-          week[:week_status] = 'Good'
-        elsif drink_units_specific(week[:start], week[:end]) <= 21
-          week[:background_color] = 'CC0000'
-          week[:font_color] = 'FFFFFF'
-          week[:week_status] = 'Over'
-        elsif drink_units_specific(week[:start], week[:end]) > 21
-          week[:background_color] = '990000'
-          week[:font_color] = 'FFFFFF'
-          week[:week_status] = 'Really Over'
-        end
+        week[:background_color] = 'CCCCCC'
+        week[:font_color] = '000000'
+        week[:week_status] = 'Untracked'
       end
 
-      week_number += 1
       current_day += 7
-      array << week
+      week_number += 1
+      list_of_weeks << week
     end
 
-    array.reverse
+    list_of_weeks.reverse
   end
 
-  def weeks_status_count(status_type)
-    weekly_breakdown = generate_weekly_breakdown
-
-    if drinks.count == 0
-      return 0
-    elsif status_type == 'Perfect'
-      weekly_breakdown.map { |week| week[:units] if (week[:units] == 0 && week[:start] > drinks.first.created_at.beginning_of_week.to_date) }
-        .compact
-        .count
-    elsif status_type == 'Really Good'
-      weekly_breakdown.map { |week| week[:units] if week[:units] > 0 && week[:units] <= 7 }
-        .compact
-        .count
-    elsif status_type == 'Good'
-      weekly_breakdown.map { |week| week[:units] if week[:units] > 7 && week[:units] <= 14 }
-        .compact
-        .count
-    elsif status_type == 'Over'
-      weekly_breakdown.map { |week| week[:units] if week[:units] > 14 && week[:units] <= 21 }
-        .compact
-        .count
-    elsif status_type == 'Really Over'
-      weekly_breakdown.map { |week| week[:units] if week[:units] > 21 }
-        .compact
-        .count
-    elsif status_type == 'Untracked'
-      weekly_breakdown.map { |week| week[:units] if week[:start] < drinks.first.created_at.beginning_of_week.to_date }
-        .compact
-        .count
+  def determine_week_design(week)
+    if week[:units] == 0
+      week[:background_color] = '009900'
+      week[:font_color] = 'FFFFFF'
+      week[:week_status] = 'Perfect'
+    elsif week[:units] <= 7
+      week[:background_color] = '00CC00'
+      week[:font_color] = 'FFFFFF'
+      week[:week_status] = 'Really Good'
+    elsif week[:units] <= 14
+      week[:background_color] = 'E5FFCC'
+      week[:font_color] = '000000'
+      week[:week_status] = 'Good'
+    elsif week[:units] <= 21
+      week[:background_color] = 'CC0000'
+      week[:font_color] = 'FFFFFF'
+      week[:week_status] = 'Over'
+    elsif week[:units] > 21
+      week[:background_color] = '990000'
+      week[:font_color] = 'FFFFFF'
+      week[:week_status] = 'Really Over'
     end
+  end
+
+  # Weekly Status Counts
+
+  def weeks_status_count(status_type)
+    generate_weekly_breakdown
+      .map { |week| week[:week_status] if week[:week_status] == status_type }
+      .compact
+      .count
   end
 end
