@@ -10,8 +10,7 @@ class UserAccountsController < ApplicationController
           user_id: new_user.id,
           role_id: 1,
           username: params[:username],
-          password: params[:password],
-          last_login: 'present'
+          password: params[:password]
         )
         if new_account.valid?
           new_account.save!
