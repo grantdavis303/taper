@@ -5,7 +5,6 @@ class CreateAccounts < ActiveRecord::Migration[7.1]
       t.references :role, null: false, foreign_key: true
       t.string :username
       t.string :password_digest
-      t.string :last_login
 
       t.timestamps
     end

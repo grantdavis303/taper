@@ -12,7 +12,7 @@ account = Account.create!(
   role_id: role_user.id,
   username: 'testuser1',
   password: 'Password123!',
-  last_login: 'Does not matter',
+  created_at: 'Thur, 8 Aug 2024 12:00:00.000000000 UTC +00:00'
 )
 
 account.drinks.create!(
@@ -153,6 +153,97 @@ account.drinks.create!(
   ounces: '16',
   percentage: '8.1',
   created_at: 'Wed, 28 Aug 2024 12:00:00.000000000 UTC +00:00'
+)
+
+account.drinks.create!(
+  drink_type: 'Beer',
+  ounces: '12',
+  percentage: '4.4',
+  created_at: 'Thur, 29 Aug 2024 12:00:00.000000000 UTC +00:00'
+)
+
+account.drinks.create!(
+  drink_type: 'Beer',
+  ounces: '16',
+  percentage: '5.3',
+  created_at: 'Fri, 30 Aug 2024 12:00:00.000000000 UTC +00:00'
+)
+
+account.drinks.create!(
+  drink_type: 'Seltzer',
+  ounces: '12',
+  percentage: '5',
+  created_at: 'Fri, 30 Aug 2024 12:00:00.000000000 UTC +00:00'
+)
+
+account.drinks.create!(
+  drink_type: 'Beer',
+  ounces: '12',
+  percentage: '6.8',
+  created_at: 'Sat, 31 Aug 2024 12:00:00.000000000 UTC +00:00'
+)
+
+account.drinks.create!(
+  drink_type: 'Spirit',
+  ounces: '1',
+  percentage: '40',
+  created_at: 'Sat, 31 Aug 2024 12:00:00.000000000 UTC +00:00'
+)
+
+account.drinks.create!(
+  drink_type: 'Spirit',
+  ounces: '1',
+  percentage: '40',
+  created_at: 'Sat, 31 Aug 2024 12:00:00.000000000 UTC +00:00'
+)
+
+account.drinks.create!(
+  drink_type: 'Seltzer',
+  ounces: '12',
+  percentage: '8',
+  created_at: 'Sat, 31 Aug 2024 12:00:00.000000000 UTC +00:00'
+)
+
+account.drinks.create!(
+  drink_type: 'Seltzer',
+  ounces: '12',
+  percentage: '5',
+  created_at: 'Sat, 31 Aug 2024 12:00:00.000000000 UTC +00:00'
+)
+
+account.drinks.create!(
+  drink_type: 'Beer',
+  ounces: '12',
+  percentage: '4.2',
+  created_at: 'Sat, 31 Aug 2024 12:00:00.000000000 UTC +00:00'
+)
+
+account.drinks.create!(
+  drink_type: 'Spirit',
+  ounces: '2',
+  percentage: '40',
+  created_at: 'Sun, 1 Sep 2024 12:00:00.000000000 UTC +00:00'
+)
+
+account.drinks.create!(
+  drink_type: 'Beer',
+  ounces: '6',
+  percentage: '4.2',
+  created_at: 'Sun, 1 Sep 2024 12:00:00.000000000 UTC +00:00'
+)
+
+account.drinks.create!(
+  drink_type: 'Beer',
+  ounces: '12',
+  percentage: '7.6',
+  created_at: 'Tue, 3 Sep 2024 12:00:00.000000000 UTC +00:00'
+)
+
+account.drinks.create!(
+  drink_type: 'Beer',
+  ounces: '12',
+  percentage: '6.3',
+  created_at: 'Tue, 3 Sep 2024 12:00:00.000000000 UTC +00:00'
 )
 
 puts "Seeded Successfully"

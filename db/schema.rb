@@ -19,7 +19,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_16_153758) do
     t.bigint "role_id", null: false
     t.string "username"
     t.string "password_digest"
-    t.string "last_login"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["role_id"], name: "index_accounts_on_role_id"
