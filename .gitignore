@@ -36,6 +36,3 @@
 
 # SimpleCov
 /coverage/
-
-# SQL
-/db/database.sql
