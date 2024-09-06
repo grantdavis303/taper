@@ -1,12 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Account, type: :model do
-  describe 'relationships' do
-    it { should belong_to(:user) }
-    it { should belong_to(:role) }
-    it { should have_many(:drinks) }
-  end
-
   describe 'validations' do
     subject { 
       user = User.create!(first_name: 'test', last_name: 'test', email: 'test_account@test.com', phone_number: '123-456-7890')
@@ -24,6 +18,12 @@ RSpec.describe Account, type: :model do
     it { should validate_length_of(:password).is_at_least(8) }
     it { should validate_length_of(:password).is_at_most(64) }
     it { should have_secure_password }
+  end
+
+  describe 'relationships' do
+    it { should belong_to(:user) }
+    it { should belong_to(:role) }
+    it { should have_many(:drinks) }
   end
 
   describe 'custom validations' do

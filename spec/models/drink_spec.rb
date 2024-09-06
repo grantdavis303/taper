@@ -1,10 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Drink, type: :model do
-  describe 'relationships' do
-    it { should belong_to(:account) }
-  end
-
   describe 'validations' do
     it { should validate_presence_of(:account_id) }
     it { should validate_presence_of(:drink_type) }
@@ -13,6 +9,10 @@ RSpec.describe Drink, type: :model do
     it { should validate_numericality_of(:account_id) }
     it { should validate_numericality_of(:ounces) }
     it { should validate_numericality_of(:percentage) }
+  end
+
+  describe 'relationships' do
+    it { should belong_to(:account) }
   end
 
   describe 'instance methods' do
