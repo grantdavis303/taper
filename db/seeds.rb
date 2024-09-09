@@ -246,4 +246,32 @@ account.drinks.create!(
   created_at: 'Tue, 3 Sep 2024 12:00:00.000000000 UTC +00:00'
 )
 
+account.drinks.create!(
+  drink_type: 'Beer',
+  ounces: '12',
+  percentage: '7',
+  created_at: 'Fri, 6 Sep 2024 12:00:00.000000000 UTC +00:00'
+)
+
+account.drinks.create!(
+  drink_type: 'Spirit',
+  ounces: '40',
+  percentage: '1.5',
+  created_at: 'Fri, 6 Sep 2024 12:00:00.000000000 UTC +00:00'
+)
+
+account.drinks.create!(
+  drink_type: 'Beer',
+  ounces: '12',
+  percentage: '4.4',
+  created_at: 'Sun, 8 Sep 2024 12:00:00.000000000 UTC +00:00'
+)
+
+account.drinks.create!(
+  drink_type: 'Beer',
+  ounces: '12',
+  percentage: '7.6',
+  created_at: 'Sun, 8 Sep 2024 12:00:00.000000000 UTC +00:00'
+)
+
 puts "Seeded Successfully"
