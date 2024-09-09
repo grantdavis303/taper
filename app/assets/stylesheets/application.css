@@ -14,6 +14,19 @@ div.page_content {
   padding-bottom: 1px;
 }
 
+div.dashboard_column {
+  display: grid;
+}
+
+div.left {
+  float: left;
+}
+
+div.right {
+  float: right;
+}
+
+
 div.links {
   text-align: center;
 }
@@ -222,5 +235,9 @@ div.drink_container {
 @media screen and (width <= 480px) {
   div.login_form_container, div.links, div.new_user_container, div.static_container {
     max-width: 350px;
+  }
+
+  div.left, div.right {
+    float: none;
   }
 }

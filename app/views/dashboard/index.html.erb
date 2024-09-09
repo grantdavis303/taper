@@ -1,82 +1,87 @@
 <%= render partial: "shared/main_nav" %>
 
-<div class="page_content">
+<div class="page_content"'>
   <h2> Welcome, <%= current_user.user.first_name %>! </h2>
 
-  <h2> Summary </h2>
+  <div class="dashboard_column left">
 
-  <% if current_user.drink_units_this_week <= 14 %>
-    <div class="drink_container" style="background-color: #99ffcc;">
-      <p> You are currently under the recommended 14 units of alcohol per week. Keep it up! </p>
+    <h2> Summary </h2>
+
+    <% if current_user.drink_units_this_week <= 14 %>
+      <div class="drink_container" style="background-color: #99ffcc;">
+        <p> You are currently under the recommended 14 units of alcohol per week. Keep it up! </p>
+      </div>
+    <% else %>
+      <div class="drink_container" style="background-color: #ffcccc;">
+        <p> You are currently over the recommended 14 units of alcohol per week. </p>
+      </div>
+    <% end %>
+
+    <div class="drink_container" style="background-color: #bfffea;">
+      <p><b> Today </b></p>
+      <p><b> <%= Date.current.strftime('%A, %B %-d, %Y') %></b></p>
+      <p> Units: <%= current_user.drink_units_today %> </p>
+      <p> Drinks: <%= current_user.drink_count_today %> </p>
     </div>
-  <% else %>
-    <div class="drink_container" style="background-color: #ffcccc;">
-      <p> You are currently over the recommended 14 units of alcohol per week. </p>
-    </div>
-  <% end %>
 
-  <div class="drink_container" style="background-color: #bfffea;">
-    <p><b> Today </b></p>
-    <p><b> <%= Date.current.strftime('%A, %B %-d, %Y') %></b></p>
-    <p> Units: <%= current_user.drink_units_today %> </p>
-    <p> Drinks: <%= current_user.drink_count_today %> </p>
-  </div>
+    <% week = current_user.generate_single_week_breakdown %>
 
-  <% week = current_user.generate_single_week_breakdown %>
-
-  <div class="drink_container" style="background-color: #bff4ff;">
-    <p><b> This Week <span class='week_status' style="background-color: #<%= week[:background_color] %>; border-color: #<%= week[:background_color] %>;color: #<%= week[:font_color] %>;"><%= week[:week_status] %></span> </b></p>
-    <p><b> <%= week[:start].strftime('%A, %B %-d') %> - <%= week[:end].strftime('%A, %B %-d') %> </b></p>
-    <p> Units: <%= week[:units] %> </p>
-    <p> Drinks: <%= week[:drinks] %> </p>
-  </div>
-
-  <div class="drink_container">
-    <p><b> This Month (<%= Date.today.strftime('%B') %>) </b></p>
-    <p> Units: <%= current_user.drink_units_this_month %> </p>
-    <p> Drinks: <%= current_user.drink_count_this_month %> </p>
-  </div>
-
-  <div class="drink_container">
-    <p><b> This Year (<%= Date.today.year %>) </b></p>
-    <p> Units: <%= current_user.drink_units_this_year %> </p>
-    <p> Drinks: <%= current_user.drink_count_this_year %> </p>
-  </div>
-
-  <div class="drink_container">
-    <p><b> All Time </b></p>
-    <p> Units: <%= current_user.drink_units_all_time %> </p>
-    <p> Drinks: <%= current_user.drink_count_all_time %> </p>
-  </div>
-
-  <h2> Weekly Breakdown </h2>
-
-  <div class="drink_container" style="background-color: #bff4ff;">
-    <p><b> Total Weeks: </b><%= current_user.weeks_this_year %></p>
-    <p><b> Perfect Weeks: </b><%= current_user.weeks_status_count('Perfect') %></p>
-    <p><b> Really Good Weeks: </b><%= current_user.weeks_status_count('Really Good') %></p>
-    <p><b> Good Weeks: </b><%= current_user.weeks_status_count('Good') %></p>
-    <p><b> Over Weeks: </b><%= current_user.weeks_status_count('Over') %></p>
-    <p><b> Really Over Weeks: </b><%= current_user.weeks_status_count('Really Over') %></p>
-    <p><b> Untracked Weeks: </b><%= current_user.weeks_status_count('Untracked') %></p>
-
-    <details>
-      <summary style='color: blue;'> <b> What do these categories mean? </b> </summary>
-      <p><b> Perfect: </b> 0 total alcoholic units </p>
-      <p><b> Really Good: </b> < 7 total alcoholic units </p>
-      <p><b> Good: </b> < 14 total alcoholic units </p>
-      <p><b> Over: </b> < 21 total alcoholic units </p>
-      <p><b> Really Over: </b> > 21 total alcoholic units </p>
-      <p><b> Untracked: </b> Before the account was created </p>      
-    </details>
-  </div>
-
-  <% current_user.generate_weekly_breakdown.each do |week| %>
-    <div class="drink_container">
-      <p><b> Week <%= week[:count] %> <span class='week_status' style="background-color: #<%= week[:background_color] %>; border-color: #<%= week[:background_color] %>; color: #<%= week[:font_color] %>;"><%= week[:week_status] %></span></b></p>
+    <div class="drink_container" style="background-color: #bff4ff;">
+      <p><b> This Week <span class='week_status' style="background-color: #<%= week[:background_color] %>; border-color: #<%= week[:background_color] %>;color: #<%= week[:font_color] %>;"><%= week[:week_status] %></span> </b></p>
       <p><b> <%= week[:start].strftime('%A, %B %-d') %> - <%= week[:end].strftime('%A, %B %-d') %> </b></p>
       <p> Units: <%= week[:units] %> </p>
       <p> Drinks: <%= week[:drinks] %> </p>
     </div>
-  <% end %>
+
+    <div class="drink_container">
+      <p><b> This Month (<%= Date.today.strftime('%B') %>) </b></p>
+      <p> Units: <%= current_user.drink_units_this_month %> </p>
+      <p> Drinks: <%= current_user.drink_count_this_month %> </p>
+    </div>
+
+    <div class="drink_container">
+      <p><b> This Year (<%= Date.today.year %>) </b></p>
+      <p> Units: <%= current_user.drink_units_this_year %> </p>
+      <p> Drinks: <%= current_user.drink_count_this_year %> </p>
+    </div>
+
+    <div class="drink_container">
+      <p><b> All Time </b></p>
+      <p> Units: <%= current_user.drink_units_all_time %> </p>
+      <p> Drinks: <%= current_user.drink_count_all_time %> </p>
+    </div>
+  </div>
+
+  <div class="dashboard_column right">
+    <h2> Weekly Breakdown </h2>
+
+    <div class="drink_container" style="background-color: #bff4ff;">
+      <p><b> Total Weeks: </b><%= current_user.weeks_this_year %></p>
+      <p><b> Perfect Weeks: </b><%= current_user.weeks_status_count('Perfect') %></p>
+      <p><b> Really Good Weeks: </b><%= current_user.weeks_status_count('Really Good') %></p>
+      <p><b> Good Weeks: </b><%= current_user.weeks_status_count('Good') %></p>
+      <p><b> Over Weeks: </b><%= current_user.weeks_status_count('Over') %></p>
+      <p><b> Really Over Weeks: </b><%= current_user.weeks_status_count('Really Over') %></p>
+      <p><b> Untracked Weeks: </b><%= current_user.weeks_status_count('Untracked') %></p>
+
+      <details>
+        <summary style='color: blue;'> <b> What do these categories mean? </b> </summary>
+        <p><b> Perfect: </b> 0 total alcoholic units </p>
+        <p><b> Really Good: </b> < 7 total alcoholic units </p>
+        <p><b> Good: </b> < 14 total alcoholic units </p>
+        <p><b> Over: </b> < 21 total alcoholic units </p>
+        <p><b> Really Over: </b> > 21 total alcoholic units </p>
+        <p><b> Untracked: </b> Before the account was created </p>      
+      </details>
+    </div>
+
+    <% current_user.generate_weekly_breakdown.each do |week| %>
+      <div class="drink_container">
+        <p><b> Week <%= week[:count] %> <span class='week_status' style="background-color: #<%= week[:background_color] %>; border-color: #<%= week[:background_color] %>; color: #<%= week[:font_color] %>;"><%= week[:week_status] %></span></b></p>
+        <p><b> <%= week[:start].strftime('%A, %B %-d') %> - <%= week[:end].strftime('%A, %B %-d') %> </b></p>
+        <p> Units: <%= week[:units] %> </p>
+        <p> Drinks: <%= week[:drinks] %> </p>
+      </div>
+    <% end %>
+  </div>
 </div>
