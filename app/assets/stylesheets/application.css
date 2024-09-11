@@ -232,12 +232,14 @@ div.drink_container {
 }
 
 /* Media Queries */
+@media screen and (width <= 840px) {
+  div.left, div.right {
+    float: none;
+  }
+}
+
 @media screen and (width <= 480px) {
   div.login_form_container, div.links, div.new_user_container, div.static_container {
     max-width: 350px;
-  }
-
-  div.left, div.right {
-    float: none;
   }
 }
