@@ -232,7 +232,7 @@ div.drink_container {
 }
 
 /* Media Queries */
-@media screen and (width <= 840px) {
+@media screen and (width <= 860px) {
   div.left, div.right {
     float: none;
   }
