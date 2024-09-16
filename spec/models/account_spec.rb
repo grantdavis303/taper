@@ -96,7 +96,7 @@ RSpec.describe Account, type: :model do
       role = Role.create!(name: 'user')
       user = User.create!(first_name: 'test', last_name: 'test', email: 'test1@test.com', phone_number: '121-456-7891')
       account = Account.create!(user_id: user.id, role_id: role.id, username: 'testuser1', password: 'Password123!')
-      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '3', created_at: Date.today - 7)
+      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '3', created_at: Time.current.to_date - 7)
       account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '4')
       account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '5')
       expect(account.drink_units_this_week).to eq (3.19)
@@ -106,7 +106,7 @@ RSpec.describe Account, type: :model do
       role = Role.create!(name: 'user')
       user = User.create!(first_name: 'test', last_name: 'test', email: 'test1@test.com', phone_number: '121-456-7891')
       account = Account.create!(user_id: user.id, role_id: role.id, username: 'testuser1', password: 'Password123!')
-      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '3', created_at: Date.today - 7)
+      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '3', created_at: Time.current.to_date - 7)
       account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '4')
       account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '5')
       expect(account.drink_count_this_week).to eq (2)
@@ -116,7 +116,7 @@ RSpec.describe Account, type: :model do
       role = Role.create!(name: 'user')
       user = User.create!(first_name: 'test', last_name: 'test', email: 'test1@test.com', phone_number: '121-456-7891')
       account = Account.create!(user_id: user.id, role_id: role.id, username: 'testuser1', password: 'Password123!')
-      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '3', created_at: Date.today - 33)
+      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '3', created_at: Time.current.to_date - 33)
       account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '4')
       account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '5')
       expect(account.drink_units_this_month).to eq (3.19)
@@ -126,7 +126,7 @@ RSpec.describe Account, type: :model do
       role = Role.create!(name: 'user')
       user = User.create!(first_name: 'test', last_name: 'test', email: 'test1@test.com', phone_number: '121-456-7891')
       account = Account.create!(user_id: user.id, role_id: role.id, username: 'testuser1', password: 'Password123!')
-      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '3', created_at: Date.today - 33)
+      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '3', created_at: Time.current.to_date - 33)
       account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '4')
       account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '5')
       expect(account.drink_count_this_month).to eq (2)
@@ -136,7 +136,7 @@ RSpec.describe Account, type: :model do
       role = Role.create!(name: 'user')
       user = User.create!(first_name: 'test', last_name: 'test', email: 'test1@test.com', phone_number: '121-456-7891')
       account = Account.create!(user_id: user.id, role_id: role.id, username: 'testuser1', password: 'Password123!')
-      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '3', created_at: Date.today - 365)
+      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '3', created_at: Time.current.to_date - 365)
       account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '4')
       account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '5')
       expect(account.drink_units_this_year).to eq (3.19)
@@ -146,7 +146,7 @@ RSpec.describe Account, type: :model do
       role = Role.create!(name: 'user')
       user = User.create!(first_name: 'test', last_name: 'test', email: 'test1@test.com', phone_number: '121-456-7891')
       account = Account.create!(user_id: user.id, role_id: role.id, username: 'testuser1', password: 'Password123!')
-      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '3', created_at: Date.today - 365)
+      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '3', created_at: Time.current.to_date - 365)
       account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '4')
       account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '5')
       expect(account.drink_count_this_year).to eq (2)
@@ -176,11 +176,11 @@ RSpec.describe Account, type: :model do
       role = Role.create!(name: 'user')
       user = User.create!(first_name: 'test', last_name: 'test', email: 'test1@test.com', phone_number: '121-456-7891')
       account = Account.create!(user_id: user.id, role_id: role.id, username: 'testuser1', password: 'Password123!')
-      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '3', created_at: Date.today - 14)
-      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '4', created_at: Date.today - 10)
-      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '5', created_at: Date.today - 6)
-      start_date = Date.today - 11
-      end_date = Date.today - 2
+      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '3', created_at: Time.current.to_date - 14)
+      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '4', created_at: Time.current.to_date - 10)
+      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '5', created_at: Time.current.to_date - 6)
+      start_date = Time.current.to_date - 11
+      end_date = Time.current.to_date - 2
       expect(account.drink_units_specific(start_date, end_date)).to eq (3.19)
     end
 
@@ -188,11 +188,11 @@ RSpec.describe Account, type: :model do
       role = Role.create!(name: 'user')
       user = User.create!(first_name: 'test', last_name: 'test', email: 'test1@test.com', phone_number: '121-456-7891')
       account = Account.create!(user_id: user.id, role_id: role.id, username: 'testuser1', password: 'Password123!')
-      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '3', created_at: Date.today - 14)
-      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '4', created_at: Date.today - 10)
-      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '5', created_at: Date.today - 6)
-      start_date = Date.today - 11
-      end_date = Date.today - 2
+      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '3', created_at: Time.current.to_date - 14)
+      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '4', created_at: Time.current.to_date - 10)
+      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '5', created_at: Time.current.to_date - 6)
+      start_date = Time.current.to_date - 11
+      end_date = Time.current.to_date - 2
       expect(account.drink_count_specific(start_date, end_date)).to eq (2)
     end
 
@@ -205,8 +205,8 @@ RSpec.describe Account, type: :model do
       account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '5')
       account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '5')
       week = {
-        start: Date.today.beginning_of_week,
-        end: Date.today.end_of_week,
+        start: Time.current.beginning_of_week,
+        end: Time.current.end_of_week,
         units: 3.54,
         drinks: 2
       }
@@ -218,8 +218,8 @@ RSpec.describe Account, type: :model do
       expect(account.generate_single_week_breakdown).to have_key (:background_color)
       expect(account.generate_single_week_breakdown).to have_key (:font_color)
       expect(account.generate_single_week_breakdown).to have_key (:week_status)
-      expect(account.generate_single_week_breakdown[:start]).to eq (Date.today.beginning_of_week)
-      expect(account.generate_single_week_breakdown[:end]).to eq (Date.today.end_of_week)
+      expect(account.generate_single_week_breakdown[:start]).to eq (Time.current.beginning_of_week)
+      expect(account.generate_single_week_breakdown[:end]).to eq (Time.current.end_of_week)
       expect(account.generate_single_week_breakdown[:units]).to eq (3.54)
       expect(account.generate_single_week_breakdown[:drinks]).to eq (2)
       expect(account.generate_single_week_breakdown[:background_color]).to eq ('00CC00')
@@ -234,7 +234,7 @@ RSpec.describe Account, type: :model do
       account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '5')
       account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '5')
       expect(account.generate_weekly_breakdown).to be_a (Array)
-      expect(account.generate_weekly_breakdown.length).to eq (Date.today.cweek)
+      expect(account.generate_weekly_breakdown.length).to eq (Time.current.to_date.cweek)
       expect(account.generate_weekly_breakdown.first).to be_a (Hash)
       expect(account.generate_weekly_breakdown.first).to have_key (:start)
       expect(account.generate_weekly_breakdown.first).to have_key (:end)
@@ -243,8 +243,8 @@ RSpec.describe Account, type: :model do
       expect(account.generate_weekly_breakdown.first).to have_key (:background_color)
       expect(account.generate_weekly_breakdown.first).to have_key (:font_color)
       expect(account.generate_weekly_breakdown.first).to have_key (:week_status)
-      expect(account.generate_weekly_breakdown.first[:start]).to eq (Date.today.beginning_of_week)
-      expect(account.generate_weekly_breakdown.first[:end]).to eq (Date.today.end_of_week)
+      expect(account.generate_weekly_breakdown.first[:start]).to eq (Time.current.beginning_of_week.to_date)
+      expect(account.generate_weekly_breakdown.first[:end]).to eq (Time.current.end_of_week.to_date)
       expect(account.generate_weekly_breakdown.first[:units]).to eq (3.54)
       expect(account.generate_weekly_breakdown.first[:drinks]).to eq (2)
       expect(account.generate_weekly_breakdown.first[:background_color]).to eq ('00CC00')
@@ -257,8 +257,8 @@ RSpec.describe Account, type: :model do
       user = User.create!(first_name: 'test', last_name: 'test', email: 'test1@test.com', phone_number: '121-456-7891')
       account = Account.create!(user_id: user.id, role_id: role.id, username: 'testuser1', password: 'Password123!')
       week = {
-        start_date: Date.today.beginning_of_week,
-        end_date: Date.today.end_of_week,
+        start_date: Time.current.beginning_of_week,
+        end_date: Time.current.end_of_week,
         units: 0,
         drinks: 0
       }
