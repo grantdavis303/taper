@@ -19,7 +19,7 @@
 
     <div class="drink_container" style="background-color: #bfffea;">
       <p><b> Today </b></p>
-      <p><b> <%= Date.current.strftime('%A, %B %-d, %Y') %></b></p>
+      <p><b> <%= Time.current.strftime('%A, %B %-d, %Y') %></b></p>
       <p> Units: <%= current_user.drink_units_today %> </p>
       <p> Drinks: <%= current_user.drink_count_today %> </p>
     </div>
