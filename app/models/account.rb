@@ -117,8 +117,8 @@ class Account < ApplicationRecord
 
   def generate_single_week_breakdown
     week = {
-      start: Time.current.beginning_of_week,
-      end: Time.current.end_of_week,
+      start: Time.current.beginning_of_week.to_date,
+      end: Time.current.end_of_week.to_date,
       units: drink_units_this_week,
       drinks: drink_count_this_week
     }
@@ -134,8 +134,8 @@ class Account < ApplicationRecord
     week_number = 1
 
     total_weeks.times do
-      start_date = Date.today.beginning_of_year + current_day
-      end_date = Date.today.beginning_of_year + current_day + 6
+      start_date = Time.current.beginning_of_year.to_date + current_day
+      end_date = Time.current.beginning_of_year.to_date + current_day + 6
       week = {
         count: week_number,
         start: start_date,

@@ -34,13 +34,13 @@
     </div>
 
     <div class="drink_container">
-      <p><b> This Month (<%= Date.today.strftime('%B') %>) </b></p>
+      <p><b> This Month (<%= Time.current.strftime('%B') %>) </b></p>
       <p> Units: <%= current_user.drink_units_this_month %> </p>
       <p> Drinks: <%= current_user.drink_count_this_month %> </p>
     </div>
 
     <div class="drink_container">
-      <p><b> This Year (<%= Date.today.year %>) </b></p>
+      <p><b> This Year (<%= Time.current.year %>) </b></p>
       <p> Units: <%= current_user.drink_units_this_year %> </p>
       <p> Drinks: <%= current_user.drink_count_this_year %> </p>
     </div>
