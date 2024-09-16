@@ -116,13 +116,11 @@ class Account < ApplicationRecord
   # Weekly Breakdowns
 
   def generate_single_week_breakdown
-    start_date = Date.today.beginning_of_week
-    end_date = Date.today.end_of_week
     week = {
-      start: start_date,
-      end: end_date,
-      units: drink_units_specific(start_date, end_date),
-      drinks: drink_count_specific(start_date, end_date)
+      start: Time.current.beginning_of_week,
+      end: Time.current.end_of_week,
+      units: drink_units_this_week,
+      drinks: drink_count_this_week
     }
 
     determine_week_design(week)
