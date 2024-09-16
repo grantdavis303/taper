@@ -6,6 +6,23 @@
 
 Taper is a web application designed to track a user's alcohol consumption.
 
+### Test the Application
+
+```
+[Fork and clone this repository]
+
+cd taper
+bundle install
+rails db:{drop,create,migrate,seed}
+rails s
+
+[Open LocalHost:3000]
+
+Login to the application:
+Username: bob_the_test_bot123
+Password: Password123!
+```
+
 ### How It Works
 
 Users first create an account and then login to the application, where they will see three different pages:
