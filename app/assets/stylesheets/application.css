@@ -14,18 +14,21 @@ div.page_content {
   padding-bottom: 1px;
 }
 
+div.outer_column_container {
+  width: fit-content;
+}
+
 div.dashboard_column {
-  display: grid;
+  display: inline-block;
+  width: 400px;
+  max-width: 400px;
+  padding-right: 10px;
+  /* display: grid; */
 }
 
 div.left {
   float: left;
 }
-
-div.right {
-  float: right;
-}
-
 
 div.links {
   text-align: center;
@@ -233,7 +236,12 @@ div.drink_container {
 
 /* Media Queries */
 @media screen and (width <= 860px) {
-  div.left, div.right {
+  div.dashboard_column {
+    width: 100%;
+    padding-right: 0px;
+  }
+
+  div.left {
     float: none;
   }
 }
