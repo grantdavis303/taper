@@ -25,6 +25,7 @@ class Account < ApplicationRecord
 
   def all_drinks_in_reverse_order
     drinks
+      .order(:created_at)
       .reverse
   end
 
