@@ -2,7 +2,7 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :email, presence: true, uniqueness: true
-  validates :phone_number, presence: true
+  validates :phone_number, presence: true # add test for uniqueness?
   validate :valid_email
 
   has_one :account
