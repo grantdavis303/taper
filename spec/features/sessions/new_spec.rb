@@ -25,4 +25,104 @@ RSpec.describe 'Sessions New', type: :feature do
       # expect(page).to have_link('Forgot Password')
     end
   end
+
+  it 'successfully logs in a user to the application' do
+    role = Role.create!(id: 1, name: 'user')
+
+    user = User.create!(
+      first_name: 'Bob the Test Bot',
+      last_name: 'Testerman',
+      email: 'bob_the_test_bot@bot_test.com',
+      phone_number: '123-456-789',
+    )
+
+    account = Account.create!(
+      user_id: user.id,
+      role_id: role.id,
+      username: 'bob_the_test_bot123',
+      password: 'Password123!',
+    )
+
+    visit root_path
+
+    within '.login_form_container' do
+      fill_in (:username), with: 'bob_the_test_bot123'
+      fill_in (:password), with: 'Password123!'
+      click_on('Login')
+    end
+
+    expect(current_path).to eq (dashboard_index_path)
+    expect(page).to have_content('Successfully logged in.')
+  end
+
+  it 'does not log in a user to the application if the user_account does not exist' do
+    visit root_path
+
+    within '.login_form_container' do
+      fill_in (:username), with: 'bob_the_test_bot123'
+      fill_in (:password), with: 'Password123!'
+      click_on('Login')
+    end
+
+    expect(current_path).to eq (root_path)
+    expect(page).to have_content('User not found.')
+  end
+
+  it 'does not log in a user to the application if the username is not correct' do
+    role = Role.create!(id: 1, name: 'user')
+
+    user = User.create!(
+      first_name: 'Bob the Test Bot',
+      last_name: 'Testerman',
+      email: 'bob_the_test_bot@bot_test.com',
+      phone_number: '123-456-789',
+    )
+
+    account = Account.create!(
+      user_id: user.id,
+      role_id: role.id,
+      username: 'bob_the_test_bot123',
+      password: 'Password123!',
+    )
+
+    visit root_path
+
+    within '.login_form_container' do
+      fill_in (:username), with: 'bob_the_test_bot1234'
+      fill_in (:password), with: 'Password123!'
+      click_on('Login')
+    end
+
+    expect(current_path).to eq (root_path)
+    expect(page).to have_content('User not found.')
+  end
+
+  it 'does not log in a user to the application if the password is not correct' do
+    role = Role.create!(id: 1, name: 'user')
+
+    user = User.create!(
+      first_name: 'Bob the Test Bot',
+      last_name: 'Testerman',
+      email: 'bob_the_test_bot@bot_test.com',
+      phone_number: '123-456-789',
+    )
+
+    account = Account.create!(
+      user_id: user.id,
+      role_id: role.id,
+      username: 'bob_the_test_bot123',
+      password: 'Password123!',
+    )
+
+    visit root_path
+
+    within '.login_form_container' do
+      fill_in (:username), with: 'bob_the_test_bot123'
+      fill_in (:password), with: 'Password1234!'
+      click_on('Login')
+    end
+
+    expect(current_path).to eq (root_path)
+    expect(page).to have_content('Bad credentials. Please try again.')
+  end
 end
