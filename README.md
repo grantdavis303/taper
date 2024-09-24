@@ -42,11 +42,19 @@ Users first create an account and then login to the application, where they will
 
 ![db_schema](public/db_schema.png)
 
+### Key Features
+
+- [x] A user can successfully create a new account
+- [x] A user can login to the application with an account
+- [x] A user can create a new drink
+- [ ] A user can update an existing drink
+- [ ] A user can delete an existing drink
+
 ### Tests
 
-* 68 Total Tests (610 / 638 LOC (95.61%) covered), 7 Pending
-* 14 Feature Tests (288 / 341 LOC (84.46%) covered), 7 Pending
-* 54 Model Tests (250 / 250 LOC (100.0%) covered)
+* 80 Total Tests (866 / 878 LOC (98.63%) covered), 4 Pending
+* 26 Feature Tests (557 / 581 LOC (95.87%) covered), 4 Pending
+* 54 Model Tests (248 / 248 LOC (100.0%) covered)
 
 ### Resources
 
