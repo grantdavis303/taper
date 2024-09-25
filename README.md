@@ -4,7 +4,7 @@
 
 ### About
 
-Taper is a web application designed to track a user's alcohol consumption.
+This app allows users to track what they drink by entering in values for a drink's ounces and alcohol-by-volume (ABV) percentage.
 
 ### Test the Application
 
@@ -47,13 +47,13 @@ Users first create an account and then login to the application, where they will
 - [x] A user can successfully create a new account
 - [x] A user can login to the application with an account
 - [x] A user can create a new drink
-- [ ] A user can update an existing drink
-- [ ] A user can delete an existing drink
+- [x] A user can update an existing drink
+- [x] A user can delete an existing drink
 
 ### Tests
 
-* 80 Total Tests (866 / 878 LOC (98.63%) covered), 4 Pending
-* 26 Feature Tests (557 / 581 LOC (95.87%) covered), 4 Pending
+* 83 Total Tests (961 / 961 LOC (100%) covered), 1 Pending
+* 29 Feature Tests (664 / 664 LOC (100%) covered), 1 Pending
 * 54 Model Tests (248 / 248 LOC (100.0%) covered)
 
 ### Resources
