@@ -37,8 +37,46 @@ RSpec.describe 'Dashboard Index', type: :feature do
   end
 
   xit 'has everything' do
+    account = Account.first
+
     visit dashboard_index_path
 
-    save_and_open_page
+    expect(page).to have_content ("Welcome, #{account.user.first_name}")
+
+    expect(page).to have_content ('Summary')
+    expect(page).to have_content ('You are currently under the recommended 14 units of alcohol per week. Keep it up!')
+
+    expect(page).to have_content ('Weekly Breakdown')
+  end
+
+  it 'updates weekly status depending on drink quantity' do
+    account = Account.first
+
+    visit dashboard_index_path
+
+    expect(page).to have_content ("This Week Perfect")
+
+    account.drinks.create!(drink_type: 'Beer', ounces: '16', percentage: '7')
+    visit dashboard_index_path
+
+    expect(page).to have_content ("This Week Really Good")
+
+    account.drinks.create!(drink_type: 'Beer', ounces: '16', percentage: '7')
+    account.drinks.create!(drink_type: 'Beer', ounces: '16', percentage: '7')
+    visit dashboard_index_path
+
+    expect(page).to have_content ("This Week Good")
+
+    account.drinks.create!(drink_type: 'Beer', ounces: '16', percentage: '7')
+    account.drinks.create!(drink_type: 'Beer', ounces: '16', percentage: '7')
+    visit dashboard_index_path
+
+    expect(page).to have_content ("This Week Over")
+
+    account.drinks.create!(drink_type: 'Beer', ounces: '16', percentage: '7')
+    account.drinks.create!(drink_type: 'Beer', ounces: '16', percentage: '7')
+    visit dashboard_index_path
+
+    expect(page).to have_content ("This Week Really Over")
   end
 end

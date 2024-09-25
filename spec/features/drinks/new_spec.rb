@@ -40,13 +40,16 @@ RSpec.describe 'Drinks New', type: :feature do
     visit new_drink_path
 
     expect(page).to have_content ('Add a Drink')
-    expect(page).to have_content ('Drink Type:')
-    expect(page).to have_select (:drink_type), options: ['Beer', 'Wine', 'Spirit', 'Seltzer']
-    expect(page).to have_content ('Ounces:')
-    expect(page).to have_field (:ounces)
-    expect(page).to have_content ('ABV Percentage:')
-    expect(page).to have_field (:percentage)
-    expect(page).to have_button('Add Drink')
+
+    within '.new_drink_input' do
+      expect(page).to have_content ('Drink Type:')
+      expect(page).to have_select (:drink_type), options: ['Beer', 'Wine', 'Spirit', 'Seltzer']
+      expect(page).to have_content ('Ounces:')
+      expect(page).to have_field (:ounces)
+      expect(page).to have_content ('ABV Percentage:')
+      expect(page).to have_field (:percentage)
+      expect(page).to have_button ('Add Drink')
+    end
   end
 
   it 'successfully creates a new drink' do
