@@ -7,7 +7,7 @@
     <p> There are currently no drinks. </p>
   <% else %>
     <% current_user.all_drinks_in_reverse_order.each do |drink| %>
-      <div class='drink'>
+      <div class="drink_<%= drink.id %>">
         <p> Type: <%= drink.drink_type %> </p>
         <p> Ounces: <%= drink.ounces %> </p>
         <p> ABV%: <%= drink.percentage %> </p>

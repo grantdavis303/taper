@@ -3,7 +3,7 @@
 <div class="page_content">
   <h2> Update Drink </h2>
 
-  <div class="new_drink_input">
+  <div class="edit_drink_input">
     <%= form_with url: drink_path(@updated_drink), method: :patch, data: {turbo: false} do |form| %>
       <%= form.label :drink_type, "Drink Type:" %>  
       <%= form.select :drink_type, ['Beer', 'Wine', 'Spirit', 'Seltzer'], selected: @updated_drink.drink_type, class: "form-control" %> <br><br>
