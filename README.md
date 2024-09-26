@@ -19,7 +19,7 @@ rails s
 [Open LocalHost:3000]
 
 Login to the application:
-Username: bob_the_test_bot123
+Username: bob123
 Password: Password123!
 ```
 
