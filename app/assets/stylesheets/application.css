@@ -3,7 +3,6 @@
 }
 
 html, body {
-  /* background-color: rgb(250, 250, 250); */
   height: 100%; /* 100vh*/
   margin: 0px;
   padding: 0px;
@@ -11,27 +10,6 @@ html, body {
 
 div.page_content {
   margin: 20px;
-  padding-bottom: 1px;
-}
-
-div.outer_column_container {
-  width: fit-content;
-}
-
-div.dashboard_column {
-  display: inline-block;
-  width: 400px;
-  max-width: 400px;
-  padding-right: 10px;
-  /* display: grid; */
-}
-
-div.left {
-  float: left;
-}
-
-div.links {
-  text-align: center;
 }
 
 div.login_form_container, div.links, div.new_user_container, div.static_container {
@@ -39,59 +17,10 @@ div.login_form_container, div.links, div.new_user_container, div.static_containe
   margin: 0 auto;
 }
 
-span.week_status {
-  color: rgb(255, 255, 255);
-  padding: 1px 4px;
-  border: 2px solid #000000;
-  border-radius: 4px;
-}
+/********** Multiple Pages **********/
 
-span.red {
-  color: red;
-}
+/* Main Logo */
 
-/* Link Styles */
-
-a.delete_drink {
-  background-color: #e00083;
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  padding: 1px 4px;
-  border: 2px solid #e00083;
-  border-radius: 4px;
-}
-
-a.delete_drink:hover {
-  transition: 1s;
-  background-color: #ff0000;
-  border-color: #ff0000;
-}
-
-a.update_drink {
-  background-color: #0056e0;
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  padding: 1px 4px;
-  border: 2px solid #0056e0;
-  border-radius: 4px;
-}
-
-a.update_drink:hover {
-  transition: 1s;
-  background-color: #170fae;
-  border-color: #170fae;
-}
-
-a.create_account {
-  color: rgb(0, 0, 0);
-  text-decoration: none;
-  font-weight: normal;
-  padding: 1px 4px;
-}
-
-/* Logo */
 div.main_logo {
   max-width: 400px;
   margin: 0 auto;
@@ -113,48 +42,8 @@ img.nav_logo {
   margin-right: auto;
 }
 
-/* Flash Messages */
-div.flash_message {
-  opacity: 0;
-  max-width: 400px;
-  margin: 20px auto;
-  text-align: center;
-  border-radius: 4px;
-  animation: fade_in_out 5s;
-  position: static;
-}
+/* Main Navigation */
 
-div.flash_message.error {
-  color: rgb(255, 0, 0);
-  border: 2px solid rgb(255, 0, 0);
-}
-
-div.flash_message.success{
-  color: rgb(50, 172, 0);
-  border: 2px solid rgb(50, 172, 0);
-}
-
-@keyframes fade_in_out {
-  0%, 100% { opacity: 0; }
-  25%, 75% { opacity: 1; }
-}
-
-/* Inputs */
-input[type="text"], input[type="password"], input[type="submit"] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  border: 2px solid rgb(0, 0, 0);
-  border-radius: 4px;
-}
-
-input[type="submit"]:hover {
-  transition: 1s;
-  background-color: aquamarine;
-}
-
-/* Nav Bar */
 div.main_nav {
   background-color: #333;
 }
@@ -198,43 +87,176 @@ li a.active:hover {
   background-color: #e00000;
 }
 
-/* Drink */
+/* Inputs */
+
+input[type="text"], input[type="password"] {
+  font-size: 12px;
+  background-color: rgb(240, 240, 240);
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 0px solid rgb(0, 0, 0);
+  border-radius: 4px;
+}
+
+input[type="submit"] {
+  font-weight: bold;
+  background-color: rgb(230, 230, 230);
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 4px;
+}
+
+input[type="submit"]:hover {
+  transition: 1s;
+  background-color: aquamarine;
+}
+
+/* Flash Messages */
+
+div.flash_message {
+  opacity: 0;
+  max-width: 400px;
+  margin: 20px auto;
+  text-align: center;
+  border-radius: 4px;
+  animation: fade_in_out 5s;
+  position: static;
+}
+
+div.flash_message.error {
+  color: rgb(255, 0, 0);
+  border: 2px solid rgb(255, 0, 0);
+}
+
+div.flash_message.success{
+  color: rgb(50, 172, 0);
+  border: 2px solid rgb(50, 172, 0);
+}
+
+@keyframes fade_in_out {
+  0%, 100% { opacity: 0; }
+  25%, 75% { opacity: 1; }
+}
+
+/********** Individual Pages **********/
+
+/* Sessions New */
+
+div.links {
+  text-align: center;
+}
+
+a.create_account {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  font-weight: normal;
+  padding: 1px 4px;
+}
+
+/* UserAccounts New */
+
+span.red {
+  color: red;
+}
+
+/* Dashboard Index */
+
+div.drink_summary {
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 15px;
+  padding-right: 15px;
+  max-width: 400px;
+}
+
+div.outer_column_container {
+  width: fit-content;
+}
+
+div.dashboard_column {
+  display: inline-block;
+  width: 400px;
+  max-width: 400px;
+  padding-right: 10px;
+}
+
+div.left {
+  float: left;
+}
+
+span.week_status {
+  color: rgb(255, 255, 255);
+  padding: 1px 4px;
+  border: 2px solid #000000;
+  border-radius: 4px;
+}
+
+/* Drinks New */
+
+div.new_drink_input {
+  max-width: 400px;
+}
+
+/* Drinks Index */
+
+div.drink {
+  background-color: #bfffea;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 15px;
+  padding-right: 15px;
+  max-width: 400px;
+}
+
+a.delete_drink {
+  background-color: #e00083;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 1px 4px;
+  border: 2px solid #e00083;
+  border-radius: 4px;
+}
+
+a.delete_drink:hover {
+  transition: 1s;
+  background-color: #ff0000;
+  border-color: #ff0000;
+}
+
+a.update_drink {
+  background-color: #0056e0;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 1px 4px;
+  border: 2px solid #0056e0;
+  border-radius: 4px;
+}
+
+a.update_drink:hover {
+  transition: 1s;
+  background-color: #170fae;
+  border-color: #170fae;
+}
+
 p.delete_drink, p.update_drink {
   margin-top: 0;
   display: inline-block;
 }
 
-div.drink {
-  background-color: #bfffea;
-  /* border: 2px solid #000000;  Could change to #72e6bf */
-  border-radius: 10px;
-  margin-bottom: 20px;
-  padding-top: 4px; /* Delete if border */
-  padding-bottom: 4px; /* Delete if border */
-  padding-left: 15px;
-  padding-right: 15px;
-  max-width: 400px;
-}
-
-/* New Drink Input Drink Container */
-div.new_drink_input {
-  max-width: 400px;
-}
-
-/* Drink Container */
-div.drink_container {
-  background-color: #f0f0f0;
-  /* border: 2px solid rgb(0, 0, 0); */
-  border-radius: 10px;
-  margin-bottom: 20px;
-  padding-top: 4px; /* Delete if border */
-  padding-bottom: 4px; /* Delete if border */
-  padding-left: 15px;
-  padding-right: 15px;
-  max-width: 400px;
-}
-
 /* Media Queries */
+
 @media screen and (width <= 860px) {
   div.dashboard_column {
     width: 100%;
@@ -247,7 +269,7 @@ div.drink_container {
 }
 
 @media screen and (width <= 480px) {
-  div.login_form_container, div.links, div.new_user_container, div.static_container {
+  div.login_form_container, div.links, div.new_user_container, div.static_container, div.flash_message {
     max-width: 350px;
   }
 }
