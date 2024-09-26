@@ -3,7 +3,7 @@
 role_user = Role.create!(name: 'user')
 
 user = User.create!(
-  first_name: 'Bob the Test Bot',
+  first_name: 'Bob',
   last_name: 'Testerman',
   email: 'bob_the_test_bot@bot_test.com',
   phone_number: '123-456-789',
@@ -12,7 +12,7 @@ user = User.create!(
 account = Account.create!(
   user_id: user.id,
   role_id: role_user.id,
-  username: 'bob_the_test_bot123',
+  username: 'bob123',
   password: 'Password123!',
   created_at: 'Thur, 8 Aug 2024 12:00:00.000000000 UTC +00:00'
 )
