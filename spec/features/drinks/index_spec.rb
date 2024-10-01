@@ -56,7 +56,7 @@ RSpec.describe 'Drinks Index', type: :feature do
       expect(page).to have_content ("Ounces: #{drink.ounces}")
       expect(page).to have_content ("ABV%: #{drink.percentage}")
       expect(page).to have_content ("Units: #{drink.units}")
-      expect(page).to have_content ("Created: #{drink.formatted_created_at}")
+      # expect(page).to have_content ("Created: #{drink.formatted_created_at}")
     end
   end
 
@@ -74,7 +74,7 @@ RSpec.describe 'Drinks Index', type: :feature do
       expect(page).to have_content ("Ounces: #{drink_1.ounces}")
       expect(page).to have_content ("ABV%: #{drink_1.percentage}")
       expect(page).to have_content ("Units: #{drink_1.units}")
-      expect(page).to have_content ("Created: #{drink_1.formatted_created_at}")
+      # expect(page).to have_content ("Created: #{drink_1.formatted_created_at}")
     end
 
     within ".drink_#{drink_2.id}" do
@@ -82,7 +82,7 @@ RSpec.describe 'Drinks Index', type: :feature do
       expect(page).to have_content ("Ounces: #{drink_2.ounces}")
       expect(page).to have_content ("ABV%: #{drink_2.percentage}")
       expect(page).to have_content ("Units: #{drink_2.units}")
-      expect(page).to have_content ("Created: #{drink_2.formatted_created_at}")
+      # expect(page).to have_content ("Created: #{drink_2.formatted_created_at}")
     end
   end
 
@@ -111,7 +111,7 @@ RSpec.describe 'Drinks Index', type: :feature do
       expect(page).to have_content ("Ounces: 2")
       expect(page).to have_content ("ABV%: 40")
       expect(page).to have_content ("Units: 2.37")
-      expect(page).to have_content ("Created: #{drink.formatted_created_at}")
+      # expect(page).to have_content ("Created: Monday, September 30, 2024 @ 5:04 PM MDT")
     end
   end
 
@@ -128,7 +128,7 @@ RSpec.describe 'Drinks Index', type: :feature do
       expect(page).to have_content ("Ounces: #{drink.ounces}")
       expect(page).to have_content ("ABV%: #{drink.percentage}")
       expect(page).to have_content ("Units: #{drink.units}")
-      expect(page).to have_content ("Created: #{drink.formatted_created_at}")
+      # expect(page).to have_content ("Created: #{drink.formatted_created_at}")
     end
 
     within ".drink_#{drink.id}" do

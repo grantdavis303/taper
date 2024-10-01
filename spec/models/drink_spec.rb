@@ -37,7 +37,7 @@ RSpec.describe Drink, type: :model do
         ounces: '16',
         percentage: '8.1'
       )
-      expect(new_drink.formatted_created_at).to eq (new_drink.created_at.strftime('%A, %B %-d, %Y @ %l:%M %Z'))
+      expect(new_drink.formatted_created_at).to eq (new_drink.created_at.strftime('%A, %B %-d, %Y @ %l:%M%P %Z'))
     end
 
     it '#units' do

@@ -91,7 +91,7 @@ li a.active:hover {
 
 input[type="text"], input[type="password"] {
   font-size: 12px;
-  background-color: rgb(240, 240, 240);
+  background-color: #f0f0f0;
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -101,13 +101,14 @@ input[type="text"], input[type="password"] {
 }
 
 input[type="submit"] {
+  color: white;
   font-weight: bold;
-  background-color: rgb(230, 230, 230);
+  background-color: rgb(125, 98, 212);
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
-  border: 1px solid rgb(0, 0, 0);
+  border: 0px solid rgb(0, 0, 0);
   border-radius: 4px;
 }
 
@@ -199,9 +200,9 @@ span.week_status {
   border-radius: 4px;
 }
 
-/* Drinks New */
+/* Drinks New and Drinks Edit */
 
-div.new_drink_input {
+div.new_drink_input, div.edit_drink_input {
   max-width: 400px;
 }
 

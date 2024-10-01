@@ -7,7 +7,7 @@ class Drink < ApplicationRecord
   belongs_to :account
 
   def formatted_created_at
-    created_at.strftime('%A, %B %-d, %Y @ %l:%M %Z')
+    created_at.strftime('%A, %B %-d, %Y @ %l:%M%P %Z')
   end
 
   def units

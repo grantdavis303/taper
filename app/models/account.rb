@@ -101,16 +101,49 @@ class Account < ApplicationRecord
       .count
   end
 
+  # def drink_units_specific(start_date, end_date)
+  #   drinks
+  #     .where(created_at: start_date..end_date + 1)
+  #     .sum { |drink| drink.units }
+  #     .round(2)
+  # end
+
+  # def drink_count_specific(start_date, end_date)
+  #   drinks
+  #     .where(created_at: start_date..end_date + 1)
+  #     .count
+  # end
+
+  # drink_units_specific(Time.current.beginning_of_week.to_date, Time.current.end_of_week.to_date)
+  # drinks.where("created_at >= '#{Time.current.beginning_of_week.to_date}' AND created_at < '#{Time.current.end_of_week.to_date + 1}'")
+
+  # def drink_units_specific(start_date, end_date)
+  #   binding.pry
+
+  #   drinks
+  #     .where("created_at >= '#{start_date}' AND created_at <= '#{end_date + 1}'")
+  #     .sum { |drink| drink.units }
+  #     .round(2)
+  # end
+
+  # def drink_count_specific(start_date, end_date)
+  #   drinks
+  #     .where("created_at >= '#{start_date}' AND created_at <= '#{end_date + 1}'") # <= does this even make sense?
+  #     .count
+  # end
+
+  # Issues with .to_date messing up stuff. Without .to_date it seems to
+
   def drink_units_specific(start_date, end_date)
     drinks
-      .where("created_at >= '#{start_date}' AND created_at < '#{end_date + 1}'")
+      .where(created_at: start_date..(end_date + 1))
       .sum { |drink| drink.units }
       .round(2)
   end
 
   def drink_count_specific(start_date, end_date)
     drinks
-      .where("created_at >= '#{start_date}' AND created_at < '#{end_date + 1}'") # <= does this even make sense?
+      .where(created_at: start_date..(end_date + 1))
       .count
   end
 
@@ -135,8 +168,8 @@ class Account < ApplicationRecord
     week_number = 1
 
     total_weeks.times do
-      start_date = Time.current.beginning_of_year.to_date + current_day
-      end_date = Time.current.beginning_of_year.to_date + current_day + 6
+      start_date = (Time.current.beginning_of_year.to_date + current_day).beginning_of_day
+      end_date = (Time.current.beginning_of_year.to_date + current_day + 6).end_of_day
       week = {
         count: week_number,
         start: start_date,
