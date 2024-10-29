@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :dashboard, only: [:index]
   resources :drinks, only: [:index, :new, :create, :edit, :update, :destroy]
+  resources :support, only: [:index]
 
   get '*path' => redirect('/')
   get 'up' => 'rails/health#show', as: :rails_health_check
