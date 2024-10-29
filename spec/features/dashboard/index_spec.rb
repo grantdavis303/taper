@@ -59,24 +59,14 @@ RSpec.describe 'Dashboard Index', type: :feature do
     account.drinks.create!(drink_type: 'Beer', ounces: '16', percentage: '7')
     visit dashboard_index_path
 
-    expect(page).to have_content ("This Week Really Good")
+    expect(page).to have_content ("This Week Under")
 
     account.drinks.create!(drink_type: 'Beer', ounces: '16', percentage: '7')
     account.drinks.create!(drink_type: 'Beer', ounces: '16', percentage: '7')
-    visit dashboard_index_path
-
-    expect(page).to have_content ("This Week Good")
-
     account.drinks.create!(drink_type: 'Beer', ounces: '16', percentage: '7')
     account.drinks.create!(drink_type: 'Beer', ounces: '16', percentage: '7')
     visit dashboard_index_path
 
     expect(page).to have_content ("This Week Over")
-
-    account.drinks.create!(drink_type: 'Beer', ounces: '16', percentage: '7')
-    account.drinks.create!(drink_type: 'Beer', ounces: '16', percentage: '7')
-    visit dashboard_index_path
-
-    expect(page).to have_content ("This Week Really Over")
   end
 end

@@ -222,9 +222,9 @@ RSpec.describe Account, type: :model do
       expect(account.generate_single_week_breakdown[:end]).to eq (Time.current.end_of_week.to_date)
       expect(account.generate_single_week_breakdown[:units]).to eq (3.54)
       expect(account.generate_single_week_breakdown[:drinks]).to eq (2)
-      expect(account.generate_single_week_breakdown[:background_color]).to eq ('00CC00')
-      expect(account.generate_single_week_breakdown[:font_color]).to eq ('FFFFFF')
-      expect(account.generate_single_week_breakdown[:week_status]).to eq ('Really Good')
+      expect(account.generate_single_week_breakdown[:background_color]).to eq ('CCFFCC')
+      expect(account.generate_single_week_breakdown[:font_color]).to eq ('003300')
+      expect(account.generate_single_week_breakdown[:week_status]).to eq ('Under')
     end
 
     it '#generate_weekly_breakdown' do
@@ -247,9 +247,9 @@ RSpec.describe Account, type: :model do
       # expect(account.generate_weekly_breakdown.first[:end]).to eq (Time.current.beginning_of_year.to_date + current_day + 6).end_of_day
       expect(account.generate_weekly_breakdown.first[:units]).to eq (3.54)
       expect(account.generate_weekly_breakdown.first[:drinks]).to eq (2)
-      expect(account.generate_weekly_breakdown.first[:background_color]).to eq ('00CC00')
-      expect(account.generate_weekly_breakdown.first[:font_color]).to eq ('FFFFFF')
-      expect(account.generate_weekly_breakdown.first[:week_status]).to eq ('Really Good')
+      expect(account.generate_weekly_breakdown.first[:background_color]).to eq ('CCFFCC')
+      expect(account.generate_weekly_breakdown.first[:font_color]).to eq ('003300')
+      expect(account.generate_weekly_breakdown.first[:week_status]).to eq ('Under')
     end
 
     it 'determine_week_design(week)' do
@@ -264,13 +264,13 @@ RSpec.describe Account, type: :model do
       }
       expect(account.determine_week_design(week)).to eq ('Perfect')
       week[:units] = 1
-      expect(account.determine_week_design(week)).to eq ('Really Good')
-      week[:units] = 8
-      expect(account.determine_week_design(week)).to eq ('Good')
+      expect(account.determine_week_design(week)).to eq ('Under')
       week[:units] = 15
       expect(account.determine_week_design(week)).to eq ('Over')
-      week[:units] = 22
-      expect(account.determine_week_design(week)).to eq ('Really Over')
+      # week[:units] = 15
+      # expect(account.determine_week_design(week)).to eq ('Over')
+      # week[:units] = 22
+      # expect(account.determine_week_design(week)).to eq ('Really Over')
     end
 
     # Weekly Status Counts
@@ -281,22 +281,21 @@ RSpec.describe Account, type: :model do
       account = Account.create!(user_id: user.id, role_id: role.id, username: 'testuser1', password: 'Password123!')
       expect(account.weeks_status_count('Perfect')).to eq (1)
       account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '5')
-      expect(account.weeks_status_count('Really Good')).to eq (1)
+      expect(account.weeks_status_count('Under')).to eq (1)
       account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '5')
       account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '5')
       account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '5')
-      expect(account.weeks_status_count('Good')).to eq (1)
       account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '5')
       account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '5')
       account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '5')
       account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '5')
       expect(account.weeks_status_count('Over')).to eq (1)
-      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '5')
-      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '5')
-      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '5')
-      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '5')
-      account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '5')
-      expect(account.weeks_status_count('Really Over')).to eq (1)
+      # account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '5')
+      # account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '5')
+      # account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '5')
+      # account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '5')
+      # account.drinks.create!(drink_type: 'Beer', ounces: '12', percentage: '5')
+      # expect(account.weeks_status_count('Really Over')).to eq (1)
     end
   end
 end
