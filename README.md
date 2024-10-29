@@ -52,9 +52,9 @@ Users first create an account and then login to the application, where they will
 
 ### Tests
 
-* 83 Total Tests (961 / 961 LOC (100%) covered), 1 Pending
-* 29 Feature Tests (664 / 664 LOC (100%) covered), 1 Pending
-* 54 Model Tests (248 / 248 LOC (100.0%) covered)
+* 85 Total Tests (980 / 980 LOC (100%) covered), 1 Pending
+* 31 Feature Tests (696 / 696 LOC (100%) covered), 1 Pending
+* 54 Model Tests (243 / 243 LOC (100.0%) covered)
 
 ### Resources
 
