@@ -72,9 +72,9 @@ li a {
 }
 
 li a:hover:not(.active) {
-  transition: 1s;
+  transition: 0.5s;
   background-color: #111;
-  color: aquamarine;
+  color: #80ff80;
 }
 
 li a.active {
@@ -83,7 +83,7 @@ li a.active {
 }
 
 li a.active:hover {
-  transition: 1s;
+  transition: 0.5s;
   background-color: #e00000;
 }
 
@@ -101,9 +101,9 @@ input[type="text"], input[type="password"] {
 }
 
 input[type="submit"] {
-  color: white;
+  color: #003300;
   font-weight: bold;
-  background-color: rgb(125, 98, 212);
+  background-color: #99ff99;
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -113,8 +113,9 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-  transition: 1s;
-  background-color: aquamarine;
+  transition: 0.5s;
+  background-color: #00e6b0;
+  cursor: pointer;
 }
 
 /* Flash Messages */
@@ -153,9 +154,8 @@ div.links {
 }
 
 a.create_account {
-  color: rgb(0, 0, 0);
+  color: #0086c7;
   text-decoration: none;
-  font-weight: normal;
   padding: 1px 4px;
 }
 
@@ -209,7 +209,7 @@ div.new_drink_input, div.edit_drink_input {
 /* Drinks Index */
 
 div.drink {
-  background-color: #bfffea;
+  background-color: #f0f0f0;
   border-radius: 10px;
   margin-bottom: 10px;
   padding-top: 4px;
@@ -219,18 +219,22 @@ div.drink {
   max-width: 400px;
 }
 
+div.drink:hover {
+  transition: 0.5s;
+  background-color: #ccffcc;
+}
+
 a.delete_drink {
   background-color: #e00083;
   color: white;
   text-decoration: none;
-  font-weight: bold;
   padding: 1px 4px;
   border: 2px solid #e00083;
   border-radius: 4px;
 }
 
 a.delete_drink:hover {
-  transition: 1s;
+  transition: 0.5s;
   background-color: #ff0000;
   border-color: #ff0000;
 }
@@ -239,14 +243,13 @@ a.update_drink {
   background-color: #0056e0;
   color: white;
   text-decoration: none;
-  font-weight: bold;
   padding: 1px 4px;
   border: 2px solid #0056e0;
   border-radius: 4px;
 }
 
 a.update_drink:hover {
-  transition: 1s;
+  transition: 0.5s;
   background-color: #170fae;
   border-color: #170fae;
 }

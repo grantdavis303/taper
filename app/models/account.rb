@@ -101,39 +101,6 @@ class Account < ApplicationRecord
       .count
   end
 
-  # def drink_units_specific(start_date, end_date)
-  #   drinks
-  #     .where(created_at: start_date..end_date + 1)
-  #     .sum { |drink| drink.units }
-  #     .round(2)
-  # end
-
-  # def drink_count_specific(start_date, end_date)
-  #   drinks
-  #     .where(created_at: start_date..end_date + 1)
-  #     .count
-  # end
-
-  # drink_units_specific(Time.current.beginning_of_week.to_date, Time.current.end_of_week.to_date)
-  # drinks.where("created_at >= '#{Time.current.beginning_of_week.to_date}' AND created_at < '#{Time.current.end_of_week.to_date + 1}'")
-
-  # def drink_units_specific(start_date, end_date)
-  #   binding.pry
-
-  #   drinks
-  #     .where("created_at >= '#{start_date}' AND created_at <= '#{end_date + 1}'")
-  #     .sum { |drink| drink.units }
-  #     .round(2)
-  # end
-
-  # def drink_count_specific(start_date, end_date)
-  #   drinks
-  #     .where("created_at >= '#{start_date}' AND created_at <= '#{end_date + 1}'") # <= does this even make sense?
-  #     .count
-  # end
-
-  # Issues with .to_date messing up stuff. Without .to_date it seems to
-
   def drink_units_specific(start_date, end_date)
     drinks
       .where(created_at: start_date..(end_date + 1))
@@ -196,25 +163,17 @@ class Account < ApplicationRecord
 
   def determine_week_design(week)
     if week[:units] == 0
-      week[:background_color] = '009900'
-      week[:font_color] = 'FFFFFF'
+      week[:background_color] = '99ff99'
+      week[:font_color] = '001900'
       week[:week_status] = 'Perfect'
-    elsif week[:units] <= 7
-      week[:background_color] = '00CC00'
-      week[:font_color] = 'FFFFFF'
-      week[:week_status] = 'Really Good'
     elsif week[:units] <= 14
-      week[:background_color] = 'E5FFCC'
-      week[:font_color] = '000000'
-      week[:week_status] = 'Good'
-    elsif week[:units] <= 21
-      week[:background_color] = 'CC0000'
-      week[:font_color] = 'FFFFFF'
+      week[:background_color] = 'CCFFCC'
+      week[:font_color] = '003300'
+      week[:week_status] = 'Under'
+    else
+      week[:background_color] = 'FFCCCC'
+      week[:font_color] = '330000'
       week[:week_status] = 'Over'
-    elsif week[:units] > 21
-      week[:background_color] = '990000'
-      week[:font_color] = 'FFFFFF'
-      week[:week_status] = 'Really Over'
     end
   end
 
