@@ -6,7 +6,7 @@
   <div class="new_drink_input">
     <%= form_with url: drinks_path, method: :post, data: {turbo: false} do |form| %>
       <%= form.label :drink_type, "Drink Type:" %>  
-      <%= form.select :drink_type, ['Beer', 'Wine', 'Spirit', 'Seltzer'], selected: 'Beer', class: "form-control" %> <br><br>
+      <%= form.select :drink_type, ['Beer', 'Wine', 'Spirit', 'Seltzer', 'Cider', 'Other'], selected: 'Beer', class: "form-control" %> <br><br>
 
       <%= form.label :ounces, "Ounces:" %>
       <%= form.text_field :ounces, inputmode: 'numeric' %>
