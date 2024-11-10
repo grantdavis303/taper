@@ -22,6 +22,7 @@ class UserAccountsController < ApplicationController
           redirect_to new_user_account_path
         end
       else
+        new_user.destroy!
         flash[:error] = 'These passwords do not match.'
         redirect_to new_user_account_path
       end
