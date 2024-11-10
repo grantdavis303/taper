@@ -57,14 +57,14 @@ RSpec.describe 'UserAccount New', type: :feature do
 
   it 'does not create a new user_account if the email is already taken' do
     Role.create!(id: 1, name: 'user')
-    
+
     user = User.create!(
       first_name: 'Bob the Test Bot',
       last_name: 'Testerman',
       email: 'bob_the_test_bot@bot_test.com',
       phone_number: '123-456-789',
     )
-    
+
     account = Account.create!(
       user_id: user.id,
       role_id: 1,
@@ -97,14 +97,14 @@ RSpec.describe 'UserAccount New', type: :feature do
 
   it 'does not create a new user_account if the username is already taken' do
     Role.create!(id: 1, name: 'user')
-    
+
     user = User.create!(
       first_name: 'Bob the Test Bot',
       last_name: 'Testerman',
       email: 'bob_the_test_bot@bot_test.com',
       phone_number: '123-456-789',
     )
-    
+
     account = Account.create!(
       user_id: user.id,
       role_id: 1,
@@ -206,7 +206,7 @@ RSpec.describe 'UserAccount New', type: :feature do
 
     expect(current_path).to eq (new_user_account_path)
     expect(page).to have_content('These passwords do not match.')
-    expect(User.all.count).to eq (1)
+    expect(User.all.count).to eq (0)
     expect(Account.all.count).to eq (0)
   end
 end
