@@ -43,7 +43,7 @@ RSpec.describe 'Drinks New', type: :feature do
 
     within '.new_drink_input' do
       expect(page).to have_content ('Drink Type:')
-      expect(page).to have_select (:drink_type), options: ['Beer', 'Wine', 'Spirit', 'Seltzer']
+      expect(page).to have_select (:drink_type), options: ['Beer', 'Wine', 'Spirit', 'Seltzer', 'Cider', 'Other']
       expect(page).to have_content ('Ounces:')
       expect(page).to have_field (:ounces)
       expect(page).to have_content ('ABV Percentage:')
