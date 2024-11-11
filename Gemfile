@@ -53,6 +53,7 @@ gem "bcrypt", "~> 3.1.7"
 # Design Gems
 # gem "sassc-rails"
 gem "bootstrap-sass"
+gem "chartkick", "~> 5.1"
 
 group :development do
   gem "web-console"
@@ -78,3 +79,4 @@ group :test do
   gem "vcr"
   gem "webmock"
 end
+gem "groupdate", "~> 6.5"
