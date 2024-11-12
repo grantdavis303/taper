@@ -200,6 +200,10 @@ span.week_status {
   border-radius: 4px;
 }
 
+div.bar_chart {
+  width: 410px;
+}
+
 /* Drinks New and Drinks Edit */
 
 div.new_drink_input, div.edit_drink_input {
@@ -269,6 +273,10 @@ p.delete_drink, p.update_drink {
 
   div.left {
     float: none;
+  }
+
+  div.bar_chart {
+    max-width: 350px;
   }
 }
 

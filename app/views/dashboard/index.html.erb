@@ -3,7 +3,9 @@
 <div class="page_content">
   <h2> Welcome, <%= current_user.user.first_name %>! </h2>
 
-  <%= column_chart({ "Drinks This Week" => current_user.drink_count_this_week, "Drinks Today" => current_user.drink_count_today}, colors: ["#00e600", "#00ff00"]) %>
+  <div class="bar_chart">
+    <%= column_chart({ "Drinks This Week" => current_user.drink_count_this_week, "Drinks Today" => current_user.drink_count_today}, colors: ["#00e600", "#00ff00"]) %>
+  </div>
 
   <div class="outer_column_container">
 
