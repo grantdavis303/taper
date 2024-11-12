@@ -200,7 +200,7 @@ span.week_status {
   border-radius: 4px;
 }
 
-div.bar_chart {
+div.bar_chart, div.pie_chart {
   width: 410px;
 }
 
@@ -275,7 +275,7 @@ p.delete_drink, p.update_drink {
     float: none;
   }
 
-  div.bar_chart {
+  div.bar_chart, div.pie_chart {
     max-width: 350px;
   }
 }
