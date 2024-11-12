@@ -36,6 +36,7 @@ RSpec.describe 'Drinks Edit', type: :feature do
     expect(page).to have_content ('Dashboard')
     expect(page).to have_content ('New Drink')
     expect(page).to have_content ('All Drinks')
+    expect(page).to have_content ('FAQs')
     expect(page).to have_content ('Log Out')
   end
 

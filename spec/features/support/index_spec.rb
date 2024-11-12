@@ -33,6 +33,7 @@ RSpec.describe 'Dashboard Index', type: :feature do
     expect(page).to have_content ('Dashboard')
     expect(page).to have_content ('New Drink')
     expect(page).to have_content ('All Drinks')
+    expect(page).to have_content ('FAQs')
     expect(page).to have_content ('Log Out')
   end
 
@@ -42,7 +43,7 @@ RSpec.describe 'Dashboard Index', type: :feature do
     visit support_index_path
 
     expect(page).to have_content ("FAQs")
-  
+
     expect(page).to have_content ("What is this app?")
     expect(page).to have_content ("This app allows users to track what they drink by entering in values for a drink's ounces and alcohol-by-volume (ABV) percentage.")
 
