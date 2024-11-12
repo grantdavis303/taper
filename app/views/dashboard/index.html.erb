@@ -8,9 +8,9 @@
       <%= column_chart({ "Drinks This Week" => current_user.drink_count_this_week, "Drinks Today" => current_user.drink_count_today}, colors: ["#00e600", "#00ff00"]) %>
     </div>
 
-    <div class="pie_chart">
+    <!-- <div class="pie_chart">
       <%= pie_chart({"Perfect Weeks" => current_user.weeks_status_count('Perfect'), "Under Weeks" => current_user.weeks_status_count('Under'), "Over Weeks" => current_user.weeks_status_count('Over'), "Untracked Weeks" => current_user.weeks_status_count('Untracked')}, colors: ["#00e600", "#00ff00", "#ff0000", "#efefef"], donut: true, legend: false) %>
-    </div>
+    </div> -->
   </div>
 
   <div class="outer_column_container">
