@@ -85,3 +85,15 @@
     </div>
   </div>
 </div>
+
+<script>
+  window.addEventListener('resize', updateNavigationDisplay);
+
+  function updateNavigationDisplay(){
+    if (window.innerWidth < 875) {
+        document.getElementById("main_navigation_id").style.display = 'grid';
+    } else {
+        document.getElementById("main_navigation_id").style.display = 'block';
+    }
+  }
+</script>

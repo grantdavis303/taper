@@ -276,7 +276,7 @@ p.delete_drink, p.update_drink {
   }
 
   div.bar_chart, div.pie_chart {
-    max-width: 350px;
+    max-width: 410px;
   }
 }
 
