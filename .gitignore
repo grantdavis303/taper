@@ -36,3 +36,7 @@
 
 # SimpleCov
 /coverage/
+
+# File Organization
+/.DS_Store
+**/.DS_Store
