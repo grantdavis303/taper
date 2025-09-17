@@ -1,24 +1,38 @@
 # Taper
 
-### [Live Deployment](https://taper-4affd5dec44c.herokuapp.com/)
+An educational health and wellness web application that allows users to track their alcoholic unit consumption by entering in values for a drink’s ounces and alcohol-by-volume (ABV) percentage.
 
-### About
+### Local Setup
 
-This app allows users to track what they drink by entering in values for a drink's ounces and alcohol-by-volume (ABV) percentage.
-
-### Test the Application
+1. Navigate to Repo
 
 ```
-[Fork and clone this repository]
-
 cd taper
+```
+
+2. Install Dependencies
+
+```
 bundle install
+```
+
+3. Create a New Database
+
+```
 rails db:{drop,create,migrate,seed}
+```
+
+4. Run the Development Server
+
+```
+open http://localhost:3000/
+
 rails s
+```
 
-[Open LocalHost:3000]
+5. Login to the Application
 
-Login to the application:
+```
 Username: bob123
 Password: Password123!
 ```
@@ -55,11 +69,3 @@ Users first create an account and then login to the application, where they will
 * 85 Total Tests (980 / 980 LOC (100%) covered), 1 Pending
 * 31 Feature Tests (696 / 696 LOC (100%) covered), 1 Pending
 * 54 Model Tests (243 / 243 LOC (100.0%) covered)
-
-### Resources
-
-No resources used for this project.
-
-### Contributors
-
-* Grant Davis | [GitHub](https://github.com/grantdavis303), [LinkedIn](https://www.linkedin.com/in/grantdavis303/)
